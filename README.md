@@ -8,4 +8,9 @@ Group Project to create a collaborative application
 - test_04 - Usman
 - test_05 - Priya
 - test commit
-- test_06 - Vinay 
+- test_06 - Vinay
+
+React Environment
+
+- Vite Vesrion 5.1.0(latest)
+- Language: Typescript
