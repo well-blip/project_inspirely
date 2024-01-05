@@ -32,3 +32,4 @@ export default {
 
 <!-- TestComment  -->
 <!-- test_2 -->
+<!-- test_3 -->
