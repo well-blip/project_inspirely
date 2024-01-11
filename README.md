@@ -21,13 +21,13 @@ Before you begin, ensure you have met the following requirements:
 1. Clone the repository:
 
    ```
-   git clone https://github.com/your-username/your-project.git
+   git clone https://github.com/your-username/project_inspirely.git
    ```
 
 2. Navigate to Project directory
 
    ```
-   cd your-project
+   cd project_inspirely
    ```
 
 3. Install Dependencies
