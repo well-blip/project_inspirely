@@ -32,14 +32,14 @@ Before you begin, ensure you have met the following requirements:
 
 3. Install Dependencies
 
-   ```npm install
-
+   ```
+   npm install
    ```
 
 4. Run local development server
 
-   ```npm run dev
-
+   ```
+   npm run dev
    ```
 
 ## Project Contributors
