@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+.main-content {
+  flex: 1;
+  /* padding: 20px; */
+  background-color: #fff;
+  /* Light gray background */
+}
+
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  height: 12%;
+  padding: 7.5px;
+  /* Spacing between header and grid */
+}
+
+
+.spaces-title {
+  font-size: 100px;
+  margin-left: 50px;
+  margin-top: 50px;
+  color: #333;
+  font-family: "Poppins", sans-serif;
+  /* font-weight: 400; */
+  font-style: normal;
+}
+
+.header-buttons {
+  /* Adjust button styles as needed */
+}
+
+.button {
+  background-color: #7289DA;
+  /* Example button color */
+  border: none;
+  padding: 10px 20px;
+  margin-left: 10px;
+  /* Space between buttons */
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+}
+
+.button:first-child {
+  background-color: #5865F2;
+  /* Different color for the first button */
+}
+
+.spaces-grid {
+  display: grid;
+  padding: 50px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.divider {
+  border: none;
+  height: 1px;
+  background-color: #d3d3d3;
+  margin: 20px 0;
+  width: 100%;
+}
