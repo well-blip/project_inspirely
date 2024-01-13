@@ -11,13 +11,10 @@
 //     return <GroupPage groupName="My Group" groupContent={myGroupContent} />;
 //   };
 
-// GroupPage.tsx
-
-// GroupPage.tsx
-
-import React from "react";
+import React, { useState } from "react";
 import Sidebar from "./sidebar";
 import "./GroupPage.css";
+import FilesSectionContent from "./FilesSectionContent";
 
 interface GroupPageProps {
   groupName?: string;
@@ -25,8 +22,15 @@ interface GroupPageProps {
 }
 
 const GroupPage: React.FC<GroupPageProps> = ({ groupName, groupContent }) => {
+  // State for the selected section
+  const [selectedSection, setSelectedSection] = useState<string | null>(null);
+
   // Default to "No Name" if groupName is not provided
   const displayGroupName = groupName || "No Name";
+
+  const handleButtonClick = (section: string) => {
+    setSelectedSection(section);
+  };
 
   return (
     <div className="group-page-container">
@@ -48,27 +52,54 @@ const GroupPage: React.FC<GroupPageProps> = ({ groupName, groupContent }) => {
           </div>
         </div>
         <hr className="divider" />
-
+        <br></br>
         {/* Main content area */}
         <div className="main-content-area">
           {/* Sidebar for Files, Group Chat, Assignments */}
           <div className="secondary-sidebar">
-            <button className="sidebar-button">Files</button>
-            <button className="sidebar-button">Group Chat</button>
-            <button className="sidebar-button">Assignments</button>
+            <button
+              className="sidebar-button"
+              onClick={() => handleButtonClick("Files")}
+            >
+              Files
+            </button>
+            <button
+              className="sidebar-button"
+              onClick={() => handleButtonClick("Group Chat")}
+            >
+              Group Chat
+            </button>
+            <button
+              className="sidebar-button"
+              onClick={() => handleButtonClick("Assignments")}
+            >
+              Assignments
+            </button>
           </div>
           <div className="vertical-divider"></div>
 
           {/* Content area for each section */}
           <div className="section-content">
-            {/* Content for Files section */}
-            {/* You can add specific components or content here */}
-
-            {/* Content for Group Chat section */}
-            {/* You can add specific components or content here */}
-
-            {/* Content for Assignments section */}
-            {/* You can add specific components or content here */}
+            {/* Conditional rendering based on the selected section */}
+            {selectedSection === "Files" && (
+              <div>
+                <FilesSectionContent />
+              </div>
+            )}
+            {selectedSection === "Group Chat" && (
+              <div>
+                {/* Content for Group Chat section */}
+                {/* Add specific components or content here */}
+                <p>This is the Group Chat section content.</p>
+              </div>
+            )}
+            {selectedSection === "Assignments" && (
+              <div>
+                {/* Content for Assignments section */}
+                {/* Add specific components or content here */}
+                <p>This is the Assignments section content.</p>
+              </div>
+            )}
           </div>
         </div>
       </div>
