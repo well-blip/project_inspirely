@@ -1,0 +1,44 @@
+/* Inside your CSS file or style section */
+
+.file-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.file-table th,
+.file-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.file-table th {
+  background-color: #f2f2f2;
+}
+
+.file-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.file-table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.file-name {
+  font-weight: bold;
+}
+
+.file-details {
+  display: flex;
+  align-items: center;
+}
+
+.file-type,
+.file-size {
+  margin-left: 10px;
+}
+
+.file-explorer {
+  overflow: auto; /* Add scrollbar if content exceeds the container */
+}
