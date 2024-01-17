@@ -11,7 +11,8 @@
 }
 
 .sidebar-top {
-  padding: 10px;}
+  padding: 10px;
+}
 
 .sidebar-logo {
   /* Set your logo size and any margins if needed */
@@ -65,13 +66,13 @@
   /* Indent dropdown items */
 }
 
-.tiny-heading{
+.tiny-heading {
   width: 100%;
-    background: none;
-    border: none;
-    text-align: left;
-    /* padding: 10px 20px; */
-    padding-left: 20px;
-    color: inherit;
+  background: none;
+  border: none;
+  text-align: left;
+  /* padding: 10px 20px; */
+  padding-left: 20px;
+  color: inherit;
   font-size: 10px;
 }
