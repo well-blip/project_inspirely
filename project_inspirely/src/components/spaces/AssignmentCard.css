@@ -1,0 +1,25 @@
+/* AssignmentCard.css */
+
+.assignment-card {
+  border: 1px solid #3498db; /* Border color */
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  background-color: #3498db; /* Background color */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.assignment-card:hover {
+  background-color: #2c3e50; /* Darker background color on hover */
+}
+
+.assignment-card h4 {
+  margin-top: 0;
+  color: #ecf0f1; /* Text color for assignment name */
+}
+
+.assignment-card p {
+  margin: 8px 0;
+  color: #ecf0f1; /* Text color for other details */
+}

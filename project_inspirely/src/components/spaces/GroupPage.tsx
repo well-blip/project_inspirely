@@ -16,6 +16,8 @@ import Sidebar from "./sidebar";
 import "./GroupPage.css";
 import FilesSectionContent from "./FilesSectionContent";
 import GroupChatSection from "./GroupChatSection";
+import AssignmentCard from "./AssignmentCard"; // Import the AssignmentCard component
+import AssignmentsDetailModal from "./AssignmentsDetailModal";
 
 interface GroupPageProps {
   groupName?: string;
@@ -23,6 +25,37 @@ interface GroupPageProps {
 }
 
 const GroupPage: React.FC<GroupPageProps> = ({ groupName, groupContent }) => {
+  // Dummy data for assignments
+  const upcomingAssignments = [
+    {
+      name: "Assignment 1",
+      dueDate: "January 15, 2023",
+      description: "Lorem ipsum dolor sit amet.",
+    },
+    {
+      name: "Assignment 2",
+      dueDate: "February 1, 2023",
+      description: "Consectetur adipiscing elit.",
+    },
+    {
+      name: "Assignment 3",
+      dueDate: "February 15, 2023",
+      description:
+        "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    },
+    {
+      name: "Assignment 4",
+      dueDate: "March 1, 2023",
+      description: "Ut enim ad minim veniam.",
+    },
+    {
+      name: "Assignment 5",
+      dueDate: "March 15, 2023",
+      description:
+        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    },
+  ];
+
   // State for the selected section
   const [selectedSection, setSelectedSection] = useState<string | null>(null);
 
@@ -94,9 +127,10 @@ const GroupPage: React.FC<GroupPageProps> = ({ groupName, groupContent }) => {
             )}
             {selectedSection === "Assignments" && (
               <div>
-                {/* Content for Assignments section */}
-                {/* Add specific components or content here */}
-                <p>This is the Assignments section content.</p>
+                <h3>Upcoming Assignments</h3>
+                {upcomingAssignments.map((assignment, index) => (
+                  <AssignmentCard key={index} assignment={assignment} />
+                ))}
               </div>
             )}
           </div>
