@@ -15,6 +15,7 @@ import React, { useState } from "react";
 import Sidebar from "./sidebar";
 import "./GroupPage.css";
 import FilesSectionContent from "./FilesSectionContent";
+import GroupChatSection from "./GroupChatSection";
 
 interface GroupPageProps {
   groupName?: string;
@@ -88,9 +89,7 @@ const GroupPage: React.FC<GroupPageProps> = ({ groupName, groupContent }) => {
             )}
             {selectedSection === "Group Chat" && (
               <div>
-                {/* Content for Group Chat section */}
-                {/* Add specific components or content here */}
-                <p>This is the Group Chat section content.</p>
+                <GroupChatSection />
               </div>
             )}
             {selectedSection === "Assignments" && (

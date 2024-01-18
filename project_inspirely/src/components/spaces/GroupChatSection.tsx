@@ -1,6 +1,6 @@
 // Inside the component where you render the "Group Chat" section content
 import React, { useState } from "react";
-import "./GroupChatSection.css";
+import "./GroupChat.css";
 
 const GroupChatSection = () => {
   // Sample data for chat messages
