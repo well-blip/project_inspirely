@@ -65,20 +65,6 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   transition: 0.3s;
-  position: relative;
-  overflow: hidden; 
-}
-
-.card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 20px; /* Adjust this value to create space at the bottom */
-    background-size: cover;
-    background-position: center;
-    z-index: -1; /* Ensures the background is behind the content */
 }
 
 .card:hover {

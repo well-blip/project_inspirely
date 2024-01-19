@@ -6,7 +6,7 @@ function App() {
   const [count, setCount] = useState(0);
 
   return <Spaces />;
-  // return <GroupPage />; //to view GroupPage.tsx
+   //to view GroupPage.tsxreturn <GroupPage />;
 }
 
 export default App;
