@@ -3,7 +3,15 @@ body{
     background-color: white;
 }
 
+.heading1{
+  font-size:large;
+  color: #383838;
+}
 
+.paragraph{
+  font: size 10px;;
+  margin-bottom: 20px;
+}
 
 .signup-container {
     display: flex;
@@ -56,7 +64,7 @@ body{
     background-color: #f2f2f2;
     border-radius: 5px;
     height: 50px;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
   .mobile-number img {
@@ -67,20 +75,37 @@ body{
   .next {
     background-color: #296dff;
     color: white;
-    width: 100px;
+    width: 150px;
     height: 70px;
     border-radius: 10px;
-    text-align: center;
+    text-align: left;
     padding: 10px;
     font-weight: bold;
     font-size: large;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     border-width: 0px;
+    margin-top: 40px;
+    margin-left: 100px;
   }
-  
+  .next-login{
+    background-color: #296dff;
+    color: white;
+    width: 150px;
+    height: 70px;
+    border-radius: 10px;
+    text-align: left;
+    padding: 10px;
+    font-weight: bold;
+    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-width: 0px;
+    margin-top: 40px;
+    margin-left: 300px;
+  }
   .exist-account {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin-right: 0;
+   
   }
   
   .exist-account-next{
@@ -144,7 +169,8 @@ body{
   background-color: white;
   color: black;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 10px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   cursor: pointer;
+  
 }
