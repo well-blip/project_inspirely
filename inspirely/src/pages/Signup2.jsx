@@ -1,9 +1,5 @@
 import React from 'react';
 import '../signup-login.css';
-import { MdEmail } from "react-icons/md";
-import { MdOutlinePassword } from "react-icons/md";
-import { AiFillMobile } from "react-icons/ai";
-import SignUpImage from '../components/signUpImage';
 
 
 const Signup2 = () => {
