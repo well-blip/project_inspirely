@@ -1,0 +1,76 @@
+.card {
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    margin: 0px; 
+    transition: box-shadow 0.5s ease-in-out;
+    position: relative; 
+    height: 90%;
+  }
+  
+  .upper-part {
+    background-size: cover;
+    background-position: top center; 
+    display: flex;
+    flex-direction: column; 
+    justify-content: flex-end; 
+    position:relative;
+
+  }
+
+  
+  .team-name {
+    font-size: 1.0rem; 
+    font-weight: bold; 
+    color: white; 
+    margin-left: 1rem;
+  }
+  
+  .team-maker {
+    font-size: 0.8rem; 
+    color: white;
+    margin-left: 1rem;
+
+  }
+
+  .lower-part {
+    background: white;
+    display: flex;
+    height: 100%;
+  }
+  
+  .notifications-title {
+    font-size: 0.8rem; 
+    margin-left: 1rem;
+    /* position: relative; */
+    /* display: flex;
+    align-items: center;
+    margin-left: 1rem;
+    font-size: 0.8rem; */
+
+
+  }
+  
+  .notification-item {
+    /* font-size: 0.8rem; 
+    list-style: none; */
+    /* position: right; */
+    font-size: 0.8rem;
+    list-style: none;
+    margin-left: -22px;
+  }
+  
+  
+  .settings-text {
+    /* font-size: 0.8rem;  */
+    /* position: right; */
+    /* bottom: 20px; 
+    right: 20px; 
+    cursor: pointer; */
+    color: #fff;
+    position: absolute;
+    top: 10px; 
+    right: 10px; 
+    cursor: pointer;
+  }

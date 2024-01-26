@@ -1,33 +1,36 @@
-/* GroupChatSection.css */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 
 .chat-display {
-  max-height: 200px;
+  flex: 1;
   overflow-y: auto;
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
-.chat-message {
-  margin-bottom: 5px;
-}
-
-.user {
-  font-weight: bold;
+  border-bottom: 1px solid #ccc; /* Add a border between chat display and input */
+  padding-bottom: 10px; /* Add some padding at the bottom */
 }
 
 .chat-input {
   display: flex;
+  align-items: center;
+  padding: 10px;
 }
 
 textarea {
   flex: 1;
   resize: none;
-  margin-right: 10px;
-  padding: 5px;
+  margin-right: 10px; /* Add some space between textarea and button */
 }
 
 button {
-  padding: 5px;
+  padding: 8px 15px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
   cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
 }
