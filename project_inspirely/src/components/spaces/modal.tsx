@@ -1,49 +1,12 @@
-// import React, { useState } from 'react';
 
-// interface Card {
-//   title: string;
-//   content: string;
-//   backgroundImage?: string;
-// }
-
-// interface ModalProps {
-//   isOpen: boolean;
-//   onClose: () => void;
-//   onAddSpace: (space: Card) => void;
-// }
-
-// const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onAddSpace }) => {
-//   const [teamName, setTeamName] = useState('');
-//   const [participants, setParticipants] = useState('');
-
-//   const handleSubmit = () => {
-//     onAddSpace({ title: teamName, content: `Participants: ${participants}` });
-//     onClose();
-//   };
-
-//   if (!isOpen) return null;
-
-//   return (
-//     <div className="modal">
-//       <div className="modal-content">
-//         <span className="close" onClick={onClose}>&times;</span>
-//         <h2>Create Team</h2>
-//         <input type="text" placeholder="Team Name" value={teamName} onChange={(e) => setTeamName(e.target.value)} />
-//         <textarea placeholder="Participants" value={participants} onChange={(e) => setParticipants(e.target.value)} />
-//         <button onClick={handleSubmit}>Create</button>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Modal;
-
-// import React, { useState } from 'react';
 import React, { useState, useEffect } from 'react';
+import './modal.css';
 
 interface Card {
+  id: string;
   teamName: string;
   teamMakerName: string;
+  participants: string[];
   notifications: string[];
   backgroundImage?: string;
 }
@@ -55,21 +18,30 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onAddSpace }) => {
-  const [teamName, setTeamName] = useState('');
-  const [teamMakerName, setTeamMakerName] = useState('');
+  const [teamName, setTeamName] = useState<string>('');
+  const [teamMakerName, setTeamMakerName] = useState<string>('');
+  const [participantEmail, setParticipantEmail] = useState<string>('');
+  const [participants, setParticipants] = useState<string[]>([]);
   const [notifications, setNotifications] = useState<string[]>([]);
-  const [backgroundImage, setBackgroundImage] = useState<string | undefined>(undefined);
+  const [backgroundImage, setBackgroundImage] = useState<string>();
 
   useEffect(() => {
-    // Example of fetching notifications (replace with your actual logic)
+    // Simulate fetching notifications (replace with actual API call logic)
     const fetchNotifications = async () => {
-      // Fetch notifications from an API or use static data
-      const fetchedNotifications = ["Notification 1", "Notification 2"];
+      // Dummy data to simulate notifications
+      const fetchedNotifications = ["Class test on Tuesday"];
       setNotifications(fetchedNotifications);
     };
 
     fetchNotifications();
   }, []);
+
+  const handleAddParticipant = () => {
+    if (participantEmail && !participants.includes(participantEmail)) {
+      setParticipants([...participants, participantEmail]);
+      setParticipantEmail(''); // Clear input after adding
+    }
+  };
 
   const handleBackgroundImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -83,7 +55,15 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onAddSpace }) => {
   };
 
   const handleSubmit = () => {
-    onAddSpace({ teamName, teamMakerName, notifications, backgroundImage });
+    const newSpace: Card = {
+      id: crypto.randomUUID(),
+      teamName,
+      teamMakerName,
+      participants,
+      notifications,
+      backgroundImage,
+    };
+    onAddSpace(newSpace);
     onClose();
   };
 
@@ -111,6 +91,25 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onAddSpace }) => {
           accept="image/*"
           onChange={handleBackgroundImageChange}
         />
+        <input
+          type="email"
+          placeholder="Add Participant Email"
+          value={participantEmail}
+          onChange={(e) => setParticipantEmail(e.target.value)}
+          onKeyPress={(e) => {
+            if (e.key === 'Enter') {
+              handleAddParticipant();
+            }
+          }}
+        />
+        <button onClick={handleAddParticipant}>Add Participant</button>
+        {participants.length > 0 && (
+          <div className="participants-list">
+            {participants.map((participant, index) => (
+              <div key={index}>{participant}</div>
+            ))}
+          </div>
+        )}
         <div className="notifications">
           {notifications.map((notification, index) => (
             <div key={index}>{notification}</div>

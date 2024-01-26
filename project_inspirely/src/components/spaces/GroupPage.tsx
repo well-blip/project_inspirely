@@ -18,6 +18,11 @@ import FilesSectionContent from "./FilesSectionContent";
 import GroupChatSection from "./GroupChatSection";
 import AssignmentCard from "./AssignmentCard"; // Import the AssignmentCard component
 import AssignmentsDetailModal from "./AssignmentsDetailModal";
+import { FaRegFileAlt } from "react-icons/fa";
+import { MdOutlineChat } from "react-icons/md";
+import { MdOutlineAssignment } from "react-icons/md";
+
+
 
 interface GroupPageProps {
   groupName?: string;
@@ -60,7 +65,7 @@ const GroupPage: React.FC<GroupPageProps> = ({ groupName, groupContent }) => {
   const [selectedSection, setSelectedSection] = useState<string | null>(null);
 
   // Default to "No Name" if groupName is not provided
-  const displayGroupName = groupName || "No Name";
+  const displayGroupName = groupName || "Group";
 
   const handleButtonClick = (section: string) => {
     setSelectedSection(section);
@@ -91,22 +96,26 @@ const GroupPage: React.FC<GroupPageProps> = ({ groupName, groupContent }) => {
         <div className="main-content-area">
           {/* Sidebar for Files, Group Chat, Assignments */}
           <div className="secondary-sidebar">
-            <button
+          <button
               className="sidebar-button"
               onClick={() => handleButtonClick("Files")}
             >
+              <FaRegFileAlt style={{ marginRight: '8px' }} />
               Files
             </button>
+
             <button
               className="sidebar-button"
               onClick={() => handleButtonClick("Group Chat")}
             >
+              <MdOutlineChat style={{ marginRight: '8px' }}/>
               Group Chat
             </button>
             <button
               className="sidebar-button"
               onClick={() => handleButtonClick("Assignments")}
             >
+              <MdOutlineAssignment style={{ marginRight: '8px' }} />
               Assignments
             </button>
           </div>

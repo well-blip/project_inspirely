@@ -1,4 +1,4 @@
-/* GroupPage.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 .group-page-container {
   display: flex;
@@ -7,18 +7,23 @@
 
 .group-page-content {
   flex: 1;
-  padding: 20px;
+  /* padding: 20px; */
 }
 
 .content-header {
   display: flex;
   justify-content: space-between;
+  font-family: "Poppins", sans-serif;
   align-items: center;
+  margin-top: 1.85rem;
+  margin-bottom: 1.8rem;
+  padding-left: 2rem;
 }
 
 .header-buttons {
   display: flex;
   gap: 10px;
+  
 }
 
 .header-buttons button {
