@@ -15,6 +15,14 @@ import React, { useState } from "react";
 import Sidebar from "./sidebar";
 import "./GroupPage.css";
 import FilesSectionContent from "./FilesSectionContent";
+import GroupChatSection from "./GroupChatSection";
+import AssignmentCard from "./AssignmentCard"; // Import the AssignmentCard component
+import AssignmentsDetailModal from "./AssignmentsDetailModal";
+import { FaRegFileAlt } from "react-icons/fa";
+import { MdOutlineChat } from "react-icons/md";
+import { MdOutlineAssignment } from "react-icons/md";
+
+
 
 interface GroupPageProps {
   groupName?: string;
@@ -22,11 +30,42 @@ interface GroupPageProps {
 }
 
 const GroupPage: React.FC<GroupPageProps> = ({ groupName, groupContent }) => {
+  // Dummy data for assignments
+  const upcomingAssignments = [
+    {
+      name: "Assignment 1",
+      dueDate: "January 15, 2023",
+      description: "Lorem ipsum dolor sit amet.",
+    },
+    {
+      name: "Assignment 2",
+      dueDate: "February 1, 2023",
+      description: "Consectetur adipiscing elit.",
+    },
+    {
+      name: "Assignment 3",
+      dueDate: "February 15, 2023",
+      description:
+        "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    },
+    {
+      name: "Assignment 4",
+      dueDate: "March 1, 2023",
+      description: "Ut enim ad minim veniam.",
+    },
+    {
+      name: "Assignment 5",
+      dueDate: "March 15, 2023",
+      description:
+        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    },
+  ];
+
   // State for the selected section
   const [selectedSection, setSelectedSection] = useState<string | null>(null);
 
   // Default to "No Name" if groupName is not provided
-  const displayGroupName = groupName || "No Name";
+  const displayGroupName = groupName || "Group";
 
   const handleButtonClick = (section: string) => {
     setSelectedSection(section);
@@ -57,22 +96,26 @@ const GroupPage: React.FC<GroupPageProps> = ({ groupName, groupContent }) => {
         <div className="main-content-area">
           {/* Sidebar for Files, Group Chat, Assignments */}
           <div className="secondary-sidebar">
-            <button
+          <button
               className="sidebar-button"
               onClick={() => handleButtonClick("Files")}
             >
+              <FaRegFileAlt style={{ marginRight: '8px' }} />
               Files
             </button>
+
             <button
               className="sidebar-button"
               onClick={() => handleButtonClick("Group Chat")}
             >
+              <MdOutlineChat style={{ marginRight: '8px' }}/>
               Group Chat
             </button>
             <button
               className="sidebar-button"
               onClick={() => handleButtonClick("Assignments")}
             >
+              <MdOutlineAssignment style={{ marginRight: '8px' }} />
               Assignments
             </button>
           </div>
@@ -88,16 +131,15 @@ const GroupPage: React.FC<GroupPageProps> = ({ groupName, groupContent }) => {
             )}
             {selectedSection === "Group Chat" && (
               <div>
-                {/* Content for Group Chat section */}
-                {/* Add specific components or content here */}
-                <p>This is the Group Chat section content.</p>
+                <GroupChatSection />
               </div>
             )}
             {selectedSection === "Assignments" && (
               <div>
-                {/* Content for Assignments section */}
-                {/* Add specific components or content here */}
-                <p>This is the Assignments section content.</p>
+                <h3>Upcoming Assignments</h3>
+                {upcomingAssignments.map((assignment, index) => (
+                  <AssignmentCard key={index} assignment={assignment} />
+                ))}
               </div>
             )}
           </div>
