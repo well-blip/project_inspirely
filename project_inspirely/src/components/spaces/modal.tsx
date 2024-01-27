@@ -110,11 +110,11 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onAddSpace }) => {
             ))}
           </div>
         )}
-        <div className="notifications">
+        {/* <div className="notifications">
           {notifications.map((notification, index) => (
             <div key={index}>{notification}</div>
           ))}
-        </div>
+        </div> */}
         <button onClick={handleSubmit}>Create</button>
       </div>
     </div>

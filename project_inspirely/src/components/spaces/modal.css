@@ -74,3 +74,34 @@
     right: 10px; 
     cursor: pointer;
   }
+
+  button {
+    display: block; /* Needed to center block-level elements */
+    width: auto; /* Let the button size according to its content */
+    padding: 10px;
+    background-color: #5865F2;
+    border-radius: 6px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    margin: 10px auto 20px; /* This centers the button and adds space at the bottom */
+  }
+
+  .modal-content {
+   
+    max-height: 500px; /* Adjust the max-height as needed */
+    overflow-y: auto;
+  }
+
+  input, textarea, button {
+    display: block; /* Change display to block to allow margin auto to work */
+    width: calc(100% - 20px); /* Subtract padding from the width */
+    margin: 10px auto; /* This will center the inputs/buttons */
+    
+  }
+
+  .participants-list {
+    max-height: 100px; /* Or whatever fixed height you prefer */
+    overflow-y: auto;
+  }
