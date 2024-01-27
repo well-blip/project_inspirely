@@ -63,26 +63,28 @@
     background: white;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2); 
     border-radius: 7px;
-    position: relative;
-    width: 44px; 
+    position: absolute;
+    width: auto; 
     display: flex;
     flex-direction: column;
     align-items: center; 
+    padding: auto;
   }
   
   .popup ul {
     list-style-type: none;
     padding: 0;
-    margin: 8px;
+    margin: 4.5px;
     width: 100%; 
   }
   
   .popup li {
     cursor: pointer;
-    padding: 8px;
+    padding: 0.5rem;
     width: auto; 
     display: flex;
     justify-content: center;
+    align-items: center;
   }
   
   .popup li svg {
@@ -91,10 +93,13 @@
   
   .close-btn {
     position: absolute;
-    top: 5px;
-    right: 3px;
+    top: -15px;
+    right: 1.5px;
     border: none;
-    font-size: 9px; 
+    font-size: 11px; 
     background: none; 
     cursor: pointer; 
+    color: #3c3939;
+    font-weight: bold;
+    
   }

@@ -40,6 +40,7 @@ const Popup: React.FC<PopupProps> = ({ onClose, onDelete, onSettings }) => {
   return (
     <div className="popup-container" onClick={onClose}>
       <div className="popup" onClick={e => e.stopPropagation()}>
+      <button className="close-btn" onClick={onClose}> ✕ </button>
         <ul>
           <li onClick={onSettings}>
             <PiGearBold />
@@ -48,7 +49,7 @@ const Popup: React.FC<PopupProps> = ({ onClose, onDelete, onSettings }) => {
             <PiTrashBold />
           </li>
         </ul>
-        <button className="close-btn" onClick={onClose}>✕</button>
+        {/* <button className="close-btn" onClick={onClose}>✕</button> */}
       </div>
     </div>
   );

@@ -87,11 +87,7 @@ function Body() {
       </div>
       <div className="lower-part">  
         <h4 className= "notifications-title"><FaBell />
-</h4>
-      <div className="header-buttons">
-        <button className="button inline-button" onClick={handleNewGroupClick}>+ New Group</button>
-        <button className="button inline-button">Ahmed, Hamid</button>
-      </div>
+        </h4>
         <ul>
           {card.notifications.map((notification, notificationIndex) => (
             <li key={index} className="notification-item">{notification}</li>
