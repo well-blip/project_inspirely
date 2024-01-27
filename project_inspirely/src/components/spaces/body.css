@@ -31,7 +31,9 @@
 .header-buttons {
   display: flex;
   justify-content: flex-start;
-  align-items: last baseline;
+  align-items: center;
+  margin-bottom: -10px;
+  
 }
 
 .button {
@@ -82,6 +84,13 @@
   margin: 10px 0;
   width: 100%;
 }
+
+.profile-button { 
+  flex-grow: 1; 
+  padding: 10px 20px; 
+  white-space: nowrap; 
+}
+
 
 .modal {
   position: absolute;
