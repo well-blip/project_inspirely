@@ -70,7 +70,7 @@ function Body() {
          <h2 className="spaces-title">Spaces</h2>
          <div className="header-buttons">
          <button className="button" onClick={handleNewGroupClick}>+ New Group</button>
-           <button className="button profile-button">Ahmed, Hamid</button>
+           <button className="button">Ahmed, Hamid</button>
          </div>
        </div>
       <hr className="divider" />

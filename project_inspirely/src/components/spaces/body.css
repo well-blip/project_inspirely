@@ -17,6 +17,20 @@
   /* Spacing between header and grid */
 }
 
+.header-buttons {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: -10px;
+  
+}
+
+.profile-button { 
+  flex-grow: 1; 
+  padding: 10px 20px; 
+  white-space: nowrap; 
+}
+
 
 .spaces-title {
   font-size: 100px;
@@ -28,13 +42,6 @@
   font-style: normal;
 }
 
-.header-buttons {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-bottom: -10px;
-  
-}
 
 .button {
   background-color: #7289DA;
@@ -85,11 +92,7 @@
   width: 100%;
 }
 
-.profile-button { 
-  flex-grow: 1; 
-  padding: 10px 20px; 
-  white-space: nowrap; 
-}
+
 
 
 .modal {

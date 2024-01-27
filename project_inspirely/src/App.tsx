@@ -13,8 +13,8 @@ function App() {
   //   <Route path="/group" element={<GroupPage/>}/>
   // </Routes>
 
-  return <Spaces />;
-  // return <GroupPage />; 
+  // return <Spaces />;
+  return <GroupPage />; 
 }
 
 export default App;
