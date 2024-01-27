@@ -3,6 +3,7 @@
 import React from "react";
 import "./AssignmentDetailsModal.css";
 
+
 interface AssignmentDetailsModalProps {
   assignment: {
     name: string;
@@ -16,13 +17,19 @@ const AssignmentsDetailModal: React.FC<AssignmentDetailsModalProps> = ({
   assignment,
   onClose,
 }) => {
+
+  const handleModalClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    e.stopPropagation();
+  };
+
   return (
-    <div className="assignment-details-modal">
-      <div className="modal-content">
-        <span className="close" onClick={onClose}>
+    <div className="assignment-details-modal" onClick={onClose}>
+      <div className="modal-content" onClick={handleModalClick}>
+        <button className="close" onClick={onClose}>
           &times;
-        </span>{" "}
-        {/* Close button */}
+          </button>
+        {/* </span>{" "}
+        Close button */}
         <h2>{assignment.name}</h2>
         <p>Due Date: {assignment.dueDate}</p>
         <p>{assignment.description}</p>

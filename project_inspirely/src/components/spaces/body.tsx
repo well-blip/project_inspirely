@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import Modal from './modal'; // Ensure this import path is correct
-import './body.css'; // Ensure this import path is correct
+import Modal from './modal'; 
+import Popup from './Popup'; 
+import './body.css'; 
 // import './modal.css';
 import { CgMoreO } from "react-icons/cg";
 import { FaBell } from "react-icons/fa";
@@ -31,16 +32,35 @@ function Body() {
     setCards([...cards, newCard]);
   };
   const [popupVisible, setPopupVisible] = useState(false);
+  const [selectedCardId, setSelectedCardId] = useState<string | null>(null);
 
   
-  const deleteCard = (Card:any) => {
-    setCards(cards.filter(card => card.id !== Card));
-    setPopupVisible(false); 
+  // const deleteCard = (Card:any) => {
+  //   setCards(cards.filter(card => card.id !== Card));
+  //   setPopupVisible(false); 
+  // };
+
+  
+  // const togglePopup = () => {
+  //   setPopupVisible(!popupVisible);
+  // };
+
+  const togglePopup = (cardId?: string) => {
+      setSelectedCardId(cardId || null); // If a cardId is provided, use it; otherwise, clear the selection
+      setPopupVisible(!popupVisible);
   };
 
-  
-  const togglePopup = () => {
-    setPopupVisible(!popupVisible);
+  const handleDeleteCard = () => {
+    if (selectedCardId) {
+      setCards(cards.filter(card => card.id !== selectedCardId));
+      togglePopup(); // Hide popup after deletion
+    }
+  };
+
+  const handleSettings = () => {
+    // Implement settings functionality here
+    console.log('Settings clicked for card ID:', selectedCardId);
+    togglePopup(); // Hide popup after opening settings
   };
 
 
@@ -67,15 +87,26 @@ function Body() {
       </div>
       <div className="lower-part">  
         <h4 className= "notifications-title"><FaBell />
-</h4>
+        </h4>
         <ul>
           {card.notifications.map((notification, notificationIndex) => (
             <li key={index} className="notification-item">{notification}</li>
           ))}
         </ul>
         <div className="settings-text">
-        <CgMoreO onClick={togglePopup}/>
+        <CgMoreO onClick={(e) => {
+        e.stopPropagation(); 
+        togglePopup(card.id);
+          }} />
         </div>
+        {popupVisible && selectedCardId === card.id && (
+            <Popup
+              onClose={() => togglePopup()}
+              onDelete={handleDeleteCard}
+              onSettings={handleSettings}
+            />
+          )}
+
       </div>
     </div>
   ))}
