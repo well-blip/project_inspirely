@@ -15,7 +15,8 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
-
+import logo from "../appbar/image-removebg-preview.png"; // Adjust the path to the actual image location
+import Button from "@mui/material/Button";
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
@@ -156,25 +157,20 @@ export default function PrimarySearchAppBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{ height: 60, backgroundColor: "" }}>
+      <AppBar position="static" sx={{ height: 60, backgroundColor: "grey" }}>
         <Toolbar>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: "none", sm: "block" } }}
-          >
-            Home
-          </Typography>
+          <img
+            src={logo} // Assuming the image is in the public folder
+            alt="Your Logo" // Always include an alt attribute for accessibility
+            style={{ height: "100%", marginRight: "10px" }} // Adjust styling as needed
+          />
           <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
             <StyledInputBase
-              placeholder="Search…"
+              placeholder="Share Post !"
               inputProps={{ "aria-label": "search" }}
             />
           </Search>
+          <Button variant="contained">Post</Button>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <IconButton

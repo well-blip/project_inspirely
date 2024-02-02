@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -6,9 +6,21 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Checkbox from "@mui/material/Checkbox";
 import Avatar from "@mui/material/Avatar";
+import BasicTextFields from "./textfield";
 
 export default function CheckboxListSecondary() {
+  const [items, setItems] = React.useState([
+    "Take dog for walk",
+    "Eat Lunch",
+    "Demo",
+  ]);
   const [checked, setChecked] = React.useState([1]);
+
+  const addItem = (item) => {
+    const newItems = [...items, item];
+    setItems(newItems);
+    console.log("Updated items:", newItems);
+  };
 
   const handleToggle = (value) => () => {
     const currentIndex = checked.indexOf(value);
@@ -29,22 +41,21 @@ export default function CheckboxListSecondary() {
       sx={{
         width: "100%",
         borderRadius: 2,
-        maxWidth: { xs: 300, md: 400 } /* Adjust width based on screen size */,
-        bgcolor: "#194553",
+        maxWidth: { xs: 300, md: 400 }, // Adjust width based on screen size
+        bgcolor: "#484848",
       }}
     >
-      {[0, 1, 2, 3].map((value) => {
+      {items.map((value, index) => {
         const labelId = `checkbox-list-secondary-label-${value}`;
         return (
           <ListItem
-            key={value}
+            key={index}
             secondaryAction={
               <Checkbox
                 sx={{
-                  color: "teal" /* Unselected checkbox color */,
-
+                  color: "teal", // Unselected checkbox color
                   "&.Mui-checked": {
-                    color: "lightblue" /* Selected checkbox color */,
+                    color: "lightblue", // Selected checkbox color
                   },
                 }}
                 edge="end"
@@ -58,8 +69,8 @@ export default function CheckboxListSecondary() {
             <ListItemButton>
               <ListItemAvatar>
                 <Avatar
-                  alt={`Avatar n°${value + 1}`}
-                  src={`/static/images/avatar/${value + 1}.jpg`}
+                  alt={`Avatar n°${index + 1}`}
+                  src={`/static/images/avatar/${index + 1}.jpg`}
                 />
               </ListItemAvatar>
               <ListItemText
@@ -67,12 +78,13 @@ export default function CheckboxListSecondary() {
                   color: "whitesmoke",
                 }}
                 id={labelId}
-                primary={`Line item ${value + 1}`}
+                primary={`${value}`}
               />
             </ListItemButton>
           </ListItem>
         );
       })}
+      <BasicTextFields onAddItem={addItem} />
     </List>
   );
 }
