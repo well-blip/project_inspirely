@@ -1,4 +1,9 @@
-/* Inside your CSS file or style section */
+/* Inside your FileSectionContent.css file */
+
+.file-table-container {
+  max-height: calc(100vh - 10px); /* Adjust the margin value as needed */
+  overflow-y: auto; /* Add vertical scrollbar when content overflows */
+}
 
 .file-table {
   width: 100%;

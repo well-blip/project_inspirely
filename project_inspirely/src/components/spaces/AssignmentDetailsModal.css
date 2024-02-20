@@ -40,6 +40,19 @@
   margin-top: 0;
 }
 
+
+.close-button {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px; /* Add border-radius for better appearance */
+}
+
+.close-button:hover {
+  background-color: #2980b9;
+
 .modal-content button {
   background-color: transparent;
   border-radius: 7px;

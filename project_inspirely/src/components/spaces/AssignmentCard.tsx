@@ -1,4 +1,5 @@
 // AssignmentCard.tsx
+
 import React, { useState } from "react";
 import "./AssignmentCard.css";
 import AssignmentDetailsModal from "./AssignmentsDetailModal";
@@ -8,7 +9,6 @@ interface AssignmentCardProps {
     name: string;
     dueDate: string;
     description: string;
-    // Add more details as needed
   };
 }
 
@@ -27,7 +27,6 @@ const AssignmentCard: React.FC<AssignmentCardProps> = ({ assignment }) => {
     <div className="assignment-card" onClick={handleShowDetails}>
       <h4>{assignment.name}</h4>
       <p>Due Date: {assignment.dueDate}</p>
-      {/* Add more details as needed */}
       {showDetails && (
         <AssignmentDetailsModal
           assignment={assignment}
