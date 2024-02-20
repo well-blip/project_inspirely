@@ -1,0 +1,45 @@
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import MyNavbar from "./navbarBoot";
+import Homepage from "./homepage";
+import Cards from "./dynamicCards";
+import { useState } from "react";
+import Sidebar from "./sidebar";
+import { BrowserRouter as Router } from 'react-router-dom';
+function App() {
+  // const userName = "Eli";
+  const [name, setName] = useState("Eli");
+  const clickHandler = () => {
+    setName("Marco");
+  };
+  return (
+    <div className="App">
+      <MyNavbar />
+      <Sidebar />
+      <div
+        className="content"
+        style={{
+          fontFamily: "monospace",
+          fontSize: "15",
+          margin: "100px",
+        }}
+      >
+        <h1>Welcom to the blog website , {name}</h1>
+      </div>
+      <Homepage />
+      <Cards read="True" views="100" />
+      <a
+        className="btn btn-primary"
+        href="#"
+        role="button"
+        onClick={() => {
+          clickHandler();
+        }}
+      >
+        Link
+      </a>
+    </div>
+  );
+}
+
+export default App;

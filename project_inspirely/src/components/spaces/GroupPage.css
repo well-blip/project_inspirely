@@ -1,4 +1,4 @@
-/* GroupPage.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 .group-page-container {
   display: flex;
@@ -7,23 +7,30 @@
 
 .group-page-content {
   flex: 1;
-  padding: 20px;
+  /* padding: 20px; */
 }
 
 .content-header {
   display: flex;
   justify-content: space-between;
+  font-family: "Poppins", sans-serif;
   align-items: center;
+  margin-top: 1.85rem;
+  margin-bottom: 1.8rem;
+  padding-left: 5rem;
+  padding: 0;
 }
 
 .header-buttons {
   display: flex;
   gap: 10px;
+  
+  
 }
 
 .header-buttons button {
   padding: 10px;
-  background-color: #007bff; /* Adjust as needed */
+  background-color: #5865F2; /* Adjust as needed */
   color: #fff; /* Adjust as needed */
   border: none;
   border-radius: 5px;
@@ -31,7 +38,7 @@
 }
 
 .header-buttons button:hover {
-  background-color: #0056b3; /* Adjust as needed */
+  background-color: #5865F2; /* Adjust as needed */
 }
 
 .main-content-area {

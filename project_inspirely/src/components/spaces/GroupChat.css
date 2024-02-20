@@ -1,4 +1,8 @@
-/* GroupChatSection.css */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 
 .chat-container {
   display: flex;
@@ -27,12 +31,12 @@ textarea {
 
 button {
   padding: 8px 15px;
-  background-color: #007bff;
+  background-color: #7289DA;
   color: #fff;
   border: none;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #5865F2;
 }

@@ -1,0 +1,107 @@
+.card {
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    margin: 0px; 
+    transition: box-shadow 0.5s ease-in-out;
+    position: relative; 
+    height: 90%;
+  }
+  
+  .upper-part {
+    background-size: cover;
+    background-position: top center; 
+    display: flex;
+    flex-direction: column; 
+    justify-content: flex-end; 
+    position:relative;
+
+  }
+
+  
+  .team-name {
+    font-size: 1.0rem; 
+    font-weight: bold; 
+    color: white; 
+    margin-left: 1rem;
+  }
+  
+  .team-maker {
+    font-size: 0.8rem; 
+    color: white;
+    margin-left: 1rem;
+
+  }
+
+  .lower-part {
+    background: white;
+    display: flex;
+    height: 100%;
+  }
+  
+  .notifications-title {
+    font-size: 0.8rem; 
+    margin-left: 1rem;
+    /* position: relative; */
+    /* display: flex;
+    align-items: center;
+    margin-left: 1rem;
+    font-size: 0.8rem; */
+
+
+  }
+  
+  .notification-item {
+    /* font-size: 0.8rem; 
+    list-style: none; */
+    /* position: right; */
+    font-size: 0.8rem;
+    list-style: none;
+    margin-left: -22px;
+  }
+  
+  
+  .settings-text {
+    /* font-size: 0.8rem;  */
+    /* position: right; */
+    /* bottom: 20px; 
+    right: 20px; 
+    cursor: pointer; */
+    color: #fff;
+    position: absolute;
+    top: 10px; 
+    right: 10px; 
+    cursor: pointer;
+  }
+
+  button {
+    display: block; /* Needed to center block-level elements */
+    width: auto; /* Let the button size according to its content */
+    padding: 10px;
+    background-color: #5865F2;
+    border-radius: 6px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    margin: 10px auto 20px; /* This centers the button and adds space at the bottom */
+  }
+
+  .modal-content {
+   
+    max-height: 500px; /* Adjust the max-height as needed */
+    overflow-y: auto;
+  }
+
+  input, textarea, button {
+    display: block; /* Change display to block to allow margin auto to work */
+    width: calc(100% - 20px); /* Subtract padding from the width */
+    margin: 10px auto; /* This will center the inputs/buttons */
+    
+  }
+
+  .participants-list {
+    max-height: 100px; /* Or whatever fixed height you prefer */
+    overflow-y: auto;
+  }
