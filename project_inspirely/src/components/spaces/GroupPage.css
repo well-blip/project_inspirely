@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 .group-page-container {
   display: flex;
@@ -24,13 +24,11 @@
 .header-buttons {
   display: flex;
   gap: 10px;
-  
-  
 }
 
 .header-buttons button {
   padding: 10px;
-  background-color: #5865F2; /* Adjust as needed */
+  background-color: #230222; /* Adjust as needed */
   color: #fff; /* Adjust as needed */
   border: none;
   border-radius: 5px;
@@ -38,7 +36,7 @@
 }
 
 .header-buttons button:hover {
-  background-color: #5865F2; /* Adjust as needed */
+  background-color: #7983f2; /* Adjust as needed */
 }
 
 .main-content-area {
