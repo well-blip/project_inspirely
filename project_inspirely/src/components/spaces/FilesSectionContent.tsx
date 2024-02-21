@@ -1,5 +1,4 @@
-// FilesSectionContent.tsx
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFilePdf,
@@ -14,24 +13,64 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./FileSectionContent.css";
+import firebase from "firebase/app";
+import "firebase/storage";
 
 const FilesSectionContent = () => {
-  const files = [
-    { name: "Stage2_Report.pdf", type: "PDF", size: "2.5 MB" },
-    { name: "Pitch.pptx", type: "PowerPoint", size: "5.8 MB" },
-    { name: "TaskDivision.xlsx", type: "Excel", size: "1.2 MB" },
-    { name: "DesignSpec.docx", type: "Word", size: "3.0 MB" },
-    { name: "ProjectTimeline.pdf", type: "PDF", size: "1.8 MB" },
-    { name: "ClientFeedback.docx", type: "Word", size: "2.7 MB" },
-    { name: "BudgetOverview.xlsx", type: "Excel", size: "0.9 MB" },
-    { name: "Proposal.pdf", type: "PDF", size: "4.2 MB" },
-    { name: "MarketingPlan.pptx", type: "PowerPoint", size: "6.5 MB" },
-    { name: "VacationPhoto.jpg", type: "Image", size: "4.5 MB" },
-    { name: "MusicPlaylist.mp3", type: "Audio", size: "6.2 MB" },
-    { name: "DemoVideo.mp4", type: "Video", size: "10.1 MB" },
-    { name: "BackupFiles.zip", type: "Archive", size: "8.7 MB" },
-    { name: "JavaScriptCode.js", type: "Code", size: "0.8 MB" },
-  ];
+  const [selectedFiles, setSelectedFiles] = useState<FileList | null>(null);
+  const [files, setFiles] = useState<
+    {
+      name: string;
+      type: string;
+      size: string;
+    }[]
+  >([]);
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files) {
+      setSelectedFiles(event.target.files);
+    }
+  };
+
+  const handleConfirmation = () => {
+    if (selectedFiles) {
+      const newFiles = Array.from(selectedFiles).map((file) => ({
+        name: file.name,
+        type: getFileType(file.name),
+        size: `${(file.size / 1024 / 1024).toFixed(2)} MB`,
+      }));
+      setFiles([...files, ...newFiles]);
+      setSelectedFiles(null);
+    }
+  };
+
+  const getFileType = (fileName: string) => {
+    const extension = fileName.split(".").pop()?.toLowerCase();
+    switch (extension) {
+      case "pdf":
+        return "PDF";
+      case "pptx":
+        return "PowerPoint";
+      case "xlsx":
+        return "Excel";
+      case "docx":
+        return "Word";
+      case "jpg":
+      case "jpeg":
+      case "png":
+        return "Image";
+      case "mp3":
+        return "Audio";
+      case "mp4":
+        return "Video";
+      case "zip":
+        return "Archive";
+      case "js":
+        return "Code";
+      default:
+        return "Unknown";
+    }
+  };
 
   const getFileIcon = (fileType: string) => {
     switch (fileType) {
@@ -65,6 +104,31 @@ const FilesSectionContent = () => {
   return (
     <div className="file-table-container">
       <h3>Files</h3>
+      {selectedFiles && (
+        <div>
+          <h4>Selected Files:</h4>
+          <ul>
+            {Array.from(selectedFiles).map((file, index) => (
+              <li key={index}>{file.name}</li>
+            ))}
+          </ul>
+          <button
+            onClick={handleConfirmation}
+            className="custom-confirm-button"
+          >
+            Confirm
+          </button>
+        </div>
+      )}
+      {!selectedFiles && (
+        <input
+          type="file"
+          accept=".pdf,.pptx,.xlsx,.docx,.jpg,.mp3,.mp4,.zip,.js"
+          onChange={handleFileChange}
+          multiple
+          className="custom-file-input"
+        />
+      )}
       <table className="table">
         <thead>
           <tr>

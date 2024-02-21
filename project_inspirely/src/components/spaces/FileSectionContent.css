@@ -47,3 +47,29 @@
 .file-explorer {
   overflow: auto; /* Add scrollbar if content exceeds the container */
 }
+
+.custom-file-input {
+  background-color: #23022e;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.custom-file-input:hover {
+  background-color: #3f033f; /* Adjust hover color as needed */
+}
+
+.custom-confirm-button {
+  background-color: #23022e;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.custom-confirm-button:hover {
+  background-color: #3f033f; /* Adjust hover color as needed */
+}
