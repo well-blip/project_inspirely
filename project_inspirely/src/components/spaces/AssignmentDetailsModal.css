@@ -32,14 +32,11 @@
   background: transparent;
   cursor: pointer;
   font-size: 36px;
-  
- 
 }
 
 .modal-content h2 {
   margin-top: 0;
 }
-
 
 .close-button {
   background-color: #3498db;
@@ -53,15 +50,15 @@
 .close-button:hover {
   background-color: #2980b9;
 
-.modal-content button {
-  background-color: transparent;
-  border-radius: 7px;
-  color: #242424;
-  border:#747474;
-  padding: 0px 0%;
-  cursor: pointer;
-  font-size: 24px;
-  line-height: 1;
-  position: relative;
+  .modal-content button {
+    background-color: transparent;
+    border-radius: 7px;
+    color: #242424;
+    border: #747474;
+    padding: 0px 0%;
+    cursor: pointer;
+    font-size: 24px;
+    line-height: 1;
+    position: relative;
+  }
 }
-
