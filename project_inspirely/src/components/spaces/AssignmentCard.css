@@ -5,7 +5,7 @@
   border-radius: 8px;
   padding: 16px;
   margin-bottom: 16px;
-  background-color: #5b67e3ce; /* Background color */
+  background-color: #230222; /* Background color */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease; /* Smooth transition on hover */
 }

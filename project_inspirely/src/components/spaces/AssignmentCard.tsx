@@ -1,5 +1,4 @@
 // AssignmentCard.tsx
-
 import React, { useState } from "react";
 import "./AssignmentCard.css";
 import AssignmentDetailsModal from "./AssignmentsDetailModal";
