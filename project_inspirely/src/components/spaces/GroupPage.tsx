@@ -21,6 +21,7 @@ import AssignmentsDetailModal from "./AssignmentsDetailModal";
 import { FaRegFileAlt } from "react-icons/fa";
 import { MdOutlineChat } from "react-icons/md";
 import { MdOutlineAssignment } from "react-icons/md";
+import NewAssignmentModal from "./NewAssignmentModal"; // Add this import to the top where other imports are
 
 interface GroupPageProps {
   groupName?: string;
@@ -61,6 +62,7 @@ const GroupPage: React.FC<GroupPageProps> = ({ groupName, groupContent }) => {
 
   // State for the selected section
   const [selectedSection, setSelectedSection] = useState<string | null>(null);
+  const [showNewAssignmentModal, setShowNewAssignmentModal] = useState(false);
 
   // Default to "No Name" if groupName is not provided
   const displayGroupName = groupName || "Group";
@@ -135,6 +137,24 @@ const GroupPage: React.FC<GroupPageProps> = ({ groupName, groupContent }) => {
             {selectedSection === "Assignments" && (
               <div>
                 <h3>Upcoming Assignments</h3>
+                <button
+                  className="button"
+                  onClick={() => setShowNewAssignmentModal(true)}
+                >
+                  New Assignment
+                </button>
+
+                {showNewAssignmentModal && (
+                  <NewAssignmentModal
+                    onClose={() => setShowNewAssignmentModal(false)}
+                    onSave={(newAssignment) => {
+                      // Handle the new assignment (e.g., update the state with the new assignment or send it to the backend)
+                      console.log(newAssignment); // Placeholder for demonstration
+                      setShowNewAssignmentModal(false); // Close the modal
+                    }}
+                  />
+                )}
+
                 {upcomingAssignments.map((assignment, index) => (
                   <AssignmentCard key={index} assignment={assignment} />
                 ))}
