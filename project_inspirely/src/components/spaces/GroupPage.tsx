@@ -22,8 +22,6 @@ import { FaRegFileAlt } from "react-icons/fa";
 import { MdOutlineChat } from "react-icons/md";
 import { MdOutlineAssignment } from "react-icons/md";
 
-
-
 interface GroupPageProps {
   groupName?: string;
   groupContent?: { title: string; content: string }[];
@@ -96,11 +94,11 @@ const GroupPage: React.FC<GroupPageProps> = ({ groupName, groupContent }) => {
         <div className="main-content-area">
           {/* Sidebar for Files, Group Chat, Assignments */}
           <div className="secondary-sidebar">
-          <button
+            <button
               className="sidebar-button"
               onClick={() => handleButtonClick("Files")}
             >
-              <FaRegFileAlt style={{ marginRight: '8px' }} />
+              <FaRegFileAlt style={{ marginRight: "8px" }} />
               Files
             </button>
 
@@ -108,14 +106,14 @@ const GroupPage: React.FC<GroupPageProps> = ({ groupName, groupContent }) => {
               className="sidebar-button"
               onClick={() => handleButtonClick("Group Chat")}
             >
-              <MdOutlineChat style={{ marginRight: '8px' }}/>
+              <MdOutlineChat style={{ marginRight: "8px" }} />
               Group Chat
             </button>
             <button
               className="sidebar-button"
               onClick={() => handleButtonClick("Assignments")}
             >
-              <MdOutlineAssignment style={{ marginRight: '8px' }} />
+              <MdOutlineAssignment style={{ marginRight: "8px" }} />
               Assignments
             </button>
           </div>
