@@ -1,15 +1,12 @@
 // NewAssignmentModal.tsx
 
 import React, { useState } from "react";
-import "./NewAssignmentModal.css"; // Make sure to create and style this CSS file accordingly
+import "./NewAssignmentModal.css";
+import { Assignment } from "./AssignmentCard";
 
 interface NewAssignmentModalProps {
   onClose: () => void;
-  onSave: (assignment: {
-    name: string;
-    dueDate: string;
-    description: string;
-  }) => void;
+  onSave: (assignment: Assignment) => void; // Use the shared Assignment interface
 }
 
 const NewAssignmentModal: React.FC<NewAssignmentModalProps> = ({

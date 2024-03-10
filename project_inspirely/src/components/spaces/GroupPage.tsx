@@ -11,7 +11,7 @@
 //     return <GroupPage groupName="My Group" groupContent={myGroupContent} />;
 //   };
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Sidebar from "./sidebar";
 import "./GroupPage.css";
 import FilesSectionContent from "./FilesSectionContent";
@@ -25,6 +25,13 @@ import NewAssignmentModal from "./NewAssignmentModal"; // Add this import to the
 import { db } from "../../../firebase"; // Import the db object from firebase.tsx
 import { collection, addDoc, query, onSnapshot } from "firebase/firestore";
 
+export interface Assignment {
+  id?: string; // Optional because Firestore generates this
+  name: string;
+  dueDate: string;
+  description: string;
+}
+
 interface GroupPageProps {
   groupName?: string;
   groupContent?: { title: string; content: string }[];
@@ -32,23 +39,33 @@ interface GroupPageProps {
 
 const GroupPage: React.FC<GroupPageProps> = ({ groupName, groupContent }) => {
   // Dummy data for assignments
-  const [assignments, setAssignments] = useState([
-    {
-      name: "Assignment 1",
-      dueDate: "January 15, 2023",
-      description: "Lorem ipsum dolor sit amet.",
-    },
-    {
-      name: "Assignment 2",
-      dueDate: "February 1, 2023",
-      description: "Consectetur adipiscing elit.",
-    },
-    // Add the rest of your initial assignments here...
-  ]);
+  const [assignments, setAssignments] = useState<Assignment[]>([]);
 
   // State for the selected section
   const [selectedSection, setSelectedSection] = useState<string | null>(null);
   const [showNewAssignmentModal, setShowNewAssignmentModal] = useState(false);
+
+  useEffect(() => {
+    // Define a query for the "assignments" collection
+    const q = query(collection(db, "assignments"));
+
+    // Set up a real-time subscription using onSnapshot
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      const fetchedAssignments: Assignment[] = [];
+      querySnapshot.forEach((doc) => {
+        // Push each fetched assignment into the array, include Firestore document ID
+        fetchedAssignments.push({
+          id: doc.id,
+          ...(doc.data() as Omit<Assignment, "id">),
+        });
+      });
+      // Update the state with the fetched assignments
+      setAssignments(fetchedAssignments);
+    });
+
+    // Return a cleanup function to unsubscribe from the listener when the component unmounts
+    return () => unsubscribe();
+  }, []);
 
   // Default to "No Name" if groupName is not provided
   const displayGroupName = groupName || "Group";
@@ -137,7 +154,11 @@ const GroupPage: React.FC<GroupPageProps> = ({ groupName, groupContent }) => {
                       try {
                         const docRef = await addDoc(
                           collection(db, "assignments"),
-                          newAssignment
+                          {
+                            name: newAssignment.name,
+                            dueDate: newAssignment.dueDate,
+                            description: newAssignment.description,
+                          }
                         );
                         console.log("Document written with ID: ", docRef.id);
                         setAssignments((currentAssignments) => [

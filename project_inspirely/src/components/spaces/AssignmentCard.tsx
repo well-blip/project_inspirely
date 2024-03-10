@@ -1,14 +1,17 @@
-// AssignmentCard.tsx
 import React, { useState } from "react";
 import "./AssignmentCard.css";
 import AssignmentDetailsModal from "./AssignmentsDetailModal";
 
+// Define and export the Assignment interface
+export interface Assignment {
+  id?: string; // Optional, as it's assigned by Firestore upon creation
+  name: string;
+  dueDate: string;
+  description: string;
+}
+
 interface AssignmentCardProps {
-  assignment: {
-    name: string;
-    dueDate: string;
-    description: string;
-  };
+  assignment: Assignment; // Use the Assignment interface
 }
 
 const AssignmentCard: React.FC<AssignmentCardProps> = ({ assignment }) => {
