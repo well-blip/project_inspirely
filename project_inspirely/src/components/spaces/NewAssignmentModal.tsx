@@ -31,7 +31,7 @@ const NewAssignmentModal: React.FC<NewAssignmentModalProps> = ({
         <button className="close" onClick={onClose}>
           &times;
         </button>
-        <h2>New Assignment</h2>
+        <h4>New Assignment</h4>
         <form onSubmit={handleSubmit}>
           <input
             type="text"
@@ -46,15 +46,19 @@ const NewAssignmentModal: React.FC<NewAssignmentModalProps> = ({
             onChange={(e) => setDueDate(e.target.value)}
             required
           />
+          <br></br>
           <textarea
             placeholder="Description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
           />
+          <br></br>
           <button type="submit" className="save">
             Save Assignment
           </button>
+          <br></br>
+          <br></br>
         </form>
       </div>
     </div>

@@ -145,8 +145,9 @@ const GroupPage: React.FC<GroupPageProps> = ({ groupName, groupContent }) => {
                   onClick={() => setShowNewAssignmentModal(true)}
                 >
                   New Assignment
-                </button>
-
+                </button>{" "}
+                <br></br>
+                <br></br>
                 {showNewAssignmentModal && (
                   <NewAssignmentModal
                     onClose={() => setShowNewAssignmentModal(false)}
@@ -172,7 +173,6 @@ const GroupPage: React.FC<GroupPageProps> = ({ groupName, groupContent }) => {
                     }}
                   />
                 )}
-
                 {assignments.map((assignment, index) => (
                   <AssignmentCard key={index} assignment={assignment} />
                 ))}
