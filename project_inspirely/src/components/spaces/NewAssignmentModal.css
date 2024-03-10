@@ -1,28 +1,29 @@
 .new-assignment-modal {
-  position: fixed; /* Changed from relative to fixed for full page overlay */
+  position: fixed; /* Full page overlay */
   z-index: 1000;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Dimmed background */
+  background-color: rgba(0, 0, 0, 0.5); /* Dim background */
   display: flex;
-  align-items: center; /* Centers modal vertically */
-  justify-content: center; /* Centers modal horizontally */
+  align-items: center; /* Center modal vertically */
+  justify-content: center; /* Center modal horizontally */
 }
 
 .modal-content {
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
-  width: auto; /* Allow the modal to grow as needed */
-  max-width: 500px; /* Max width set to 500px */
+  max-width: 500px; /* Limit max width */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
 }
 
 .modal-content form {
-  display: grid; /* Changed to grid for better control over layout */
-  grid-template-columns: 1fr; /* Single column layout */
+  display: flex;
+  flex-direction: column;
   gap: 10px; /* Spacing between form elements */
 }
 
@@ -30,32 +31,40 @@ input[type="text"],
 input[type="date"],
 textarea {
   padding: 10px;
-  margin-bottom: 10px; /* Only margin bottom is needed */
+  margin-bottom: 10px; /* Space below form elements */
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
 }
 
-button.close {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  position: absolute;
-  right: 20px; /* Adjusted for consistency */
-  top: 20px; /* Adjusted for consistency */
-  cursor: pointer;
+.form-buttons {
+  display: flex;
+  justify-content: flex-end; /* Align buttons to the right */
+  gap: 10px; /* Space between buttons */
 }
 
-button.save {
-  background-color: #007bff;
-  color: white;
+button {
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  justify-self: end; /* Align the button to the end of the grid */
+  font-weight: bold; /* Optional: makes the text bold */
+}
+
+button.cancel {
+  background-color: #6c757d; /* Grey for cancel button */
+  color: white;
+}
+
+button.cancel:hover {
+  background-color: #5a6268; /* Darken on hover */
+}
+
+button.save {
+  background-color: #360234; /* Blue for save button */
+  color: white;
 }
 
 button.save:hover {
-  background-color: #0056b3;
+  background-color: #7983f2; /* Darken on hover */
 }

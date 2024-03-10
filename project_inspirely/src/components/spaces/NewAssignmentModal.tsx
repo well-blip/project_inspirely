@@ -1,7 +1,5 @@
-// NewAssignmentModal.tsx
-
 import React, { useState } from "react";
-import "./NewAssignmentModal.css";
+import "./NewAssignmentModal.css"; // Make sure to update your CSS accordingly
 import { Assignment } from "./AssignmentCard";
 
 interface NewAssignmentModalProps {
@@ -28,9 +26,6 @@ const NewAssignmentModal: React.FC<NewAssignmentModalProps> = ({
         className="new-assignment-modal-content"
         onClick={(e) => e.stopPropagation()}
       >
-        <button className="close" onClick={onClose}>
-          &times;
-        </button>
         <h4>New Assignment</h4>
         <form onSubmit={handleSubmit}>
           <input
@@ -53,13 +48,17 @@ const NewAssignmentModal: React.FC<NewAssignmentModalProps> = ({
             onChange={(e) => setDescription(e.target.value)}
             required
           />
-          <br></br>
-          <button type="submit" className="save">
-            Save Assignment
-          </button>
-          <br></br>
-          <br></br>
+          <div className="form-buttons">
+            <button type="button" className="cancel" onClick={onClose}>
+              Cancel
+            </button>
+            <button type="submit" className="save">
+              Save Assignment
+            </button>
+          </div>
         </form>
+        <br></br>
+        <br></br>
       </div>
     </div>
   );
