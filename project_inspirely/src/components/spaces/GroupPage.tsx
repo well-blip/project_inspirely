@@ -22,6 +22,8 @@ import { FaRegFileAlt } from "react-icons/fa";
 import { MdOutlineChat } from "react-icons/md";
 import { MdOutlineAssignment } from "react-icons/md";
 import NewAssignmentModal from "./NewAssignmentModal"; // Add this import to the top where other imports are
+import { db } from "../../../firebase"; // Import the db object from firebase.tsx
+import { collection, addDoc, query, onSnapshot } from "firebase/firestore";
 
 interface GroupPageProps {
   groupName?: string;
@@ -30,7 +32,7 @@ interface GroupPageProps {
 
 const GroupPage: React.FC<GroupPageProps> = ({ groupName, groupContent }) => {
   // Dummy data for assignments
-  const upcomingAssignments = [
+  const [assignments, setAssignments] = useState([
     {
       name: "Assignment 1",
       dueDate: "January 15, 2023",
@@ -41,24 +43,8 @@ const GroupPage: React.FC<GroupPageProps> = ({ groupName, groupContent }) => {
       dueDate: "February 1, 2023",
       description: "Consectetur adipiscing elit.",
     },
-    {
-      name: "Assignment 3",
-      dueDate: "February 15, 2023",
-      description:
-        "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    },
-    {
-      name: "Assignment 4",
-      dueDate: "March 1, 2023",
-      description: "Ut enim ad minim veniam.",
-    },
-    {
-      name: "Assignment 5",
-      dueDate: "March 15, 2023",
-      description:
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    },
-  ];
+    // Add the rest of your initial assignments here...
+  ]);
 
   // State for the selected section
   const [selectedSection, setSelectedSection] = useState<string | null>(null);
@@ -147,15 +133,26 @@ const GroupPage: React.FC<GroupPageProps> = ({ groupName, groupContent }) => {
                 {showNewAssignmentModal && (
                   <NewAssignmentModal
                     onClose={() => setShowNewAssignmentModal(false)}
-                    onSave={(newAssignment) => {
-                      // Handle the new assignment (e.g., update the state with the new assignment or send it to the backend)
-                      console.log(newAssignment); // Placeholder for demonstration
-                      setShowNewAssignmentModal(false); // Close the modal
+                    onSave={async (newAssignment) => {
+                      try {
+                        const docRef = await addDoc(
+                          collection(db, "assignments"),
+                          newAssignment
+                        );
+                        console.log("Document written with ID: ", docRef.id);
+                        setAssignments((currentAssignments) => [
+                          ...currentAssignments,
+                          { ...newAssignment, id: docRef.id },
+                        ]);
+                        setShowNewAssignmentModal(false);
+                      } catch (e) {
+                        console.error("Error adding document: ", e);
+                      }
                     }}
                   />
                 )}
 
-                {upcomingAssignments.map((assignment, index) => (
+                {assignments.map((assignment, index) => (
                   <AssignmentCard key={index} assignment={assignment} />
                 ))}
               </div>
