@@ -21,12 +21,12 @@ import AssignmentsDetailModal from "./AssignmentsDetailModal";
 import { FaRegFileAlt } from "react-icons/fa";
 import { MdOutlineChat } from "react-icons/md";
 import { MdOutlineAssignment } from "react-icons/md";
-import NewAssignmentModal from "./NewAssignmentModal"; // Add this import to the top where other imports are
+import NewAssignmentModal from "./NewAssignmentModal";
 import { db } from "../../../firebase"; // Import the db object from firebase.tsx
 import { collection, addDoc, query, onSnapshot } from "firebase/firestore";
 
 export interface Assignment {
-  id?: string; // Optional because Firestore generates this
+  id?: string;
   name: string;
   dueDate: string;
   description: string;
