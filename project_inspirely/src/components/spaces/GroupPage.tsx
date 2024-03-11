@@ -10,6 +10,7 @@
 
 //     return <GroupPage groupName="My Group" groupContent={myGroupContent} />;
 //   };
+//Hello world
 
 import React, { useState, useEffect } from "react";
 import Sidebar from "./sidebar";
