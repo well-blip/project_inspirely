@@ -2,23 +2,20 @@
 
 import React from "react";
 import "./AssignmentDetailsModal.css";
-
+import { Assignment } from "./AssignmentCard";
 
 interface AssignmentDetailsModalProps {
-  assignment: {
-    name: string;
-    dueDate: string;
-    description: string;
-  };
-  onClose: () => void; // Add a prop for handling modal close
+  assignment: Assignment; // Use the shared Assignment interface
+  onClose: () => void;
 }
 
 const AssignmentsDetailModal: React.FC<AssignmentDetailsModalProps> = ({
   assignment,
   onClose,
 }) => {
-
-  const handleModalClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const handleModalClick = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
     e.stopPropagation();
   };
 
@@ -27,7 +24,7 @@ const AssignmentsDetailModal: React.FC<AssignmentDetailsModalProps> = ({
       <div className="modal-content" onClick={handleModalClick}>
         <button className="close" onClick={onClose}>
           &times;
-          </button>
+        </button>
         {/* </span>{" "}
         Close button */}
         <h2>{assignment.name}</h2>

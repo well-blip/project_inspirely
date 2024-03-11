@@ -10,8 +10,9 @@
 
 //     return <GroupPage groupName="My Group" groupContent={myGroupContent} />;
 //   };
+//Hello world
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Sidebar from "./sidebar";
 import "./GroupPage.css";
 import FilesSectionContent from "./FilesSectionContent";
@@ -21,8 +22,16 @@ import AssignmentsDetailModal from "./AssignmentsDetailModal";
 import { FaRegFileAlt } from "react-icons/fa";
 import { MdOutlineChat } from "react-icons/md";
 import { MdOutlineAssignment } from "react-icons/md";
+import NewAssignmentModal from "./NewAssignmentModal";
+import { db } from "../../../firebase"; // Import the db object from firebase.tsx
+import { collection, addDoc, query, onSnapshot } from "firebase/firestore";
 
-
+export interface Assignment {
+  id?: string;
+  name: string;
+  dueDate: string;
+  description: string;
+}
 
 interface GroupPageProps {
   groupName?: string;
@@ -31,38 +40,33 @@ interface GroupPageProps {
 
 const GroupPage: React.FC<GroupPageProps> = ({ groupName, groupContent }) => {
   // Dummy data for assignments
-  const upcomingAssignments = [
-    {
-      name: "Assignment 1",
-      dueDate: "January 15, 2023",
-      description: "Lorem ipsum dolor sit amet.",
-    },
-    {
-      name: "Assignment 2",
-      dueDate: "February 1, 2023",
-      description: "Consectetur adipiscing elit.",
-    },
-    {
-      name: "Assignment 3",
-      dueDate: "February 15, 2023",
-      description:
-        "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    },
-    {
-      name: "Assignment 4",
-      dueDate: "March 1, 2023",
-      description: "Ut enim ad minim veniam.",
-    },
-    {
-      name: "Assignment 5",
-      dueDate: "March 15, 2023",
-      description:
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    },
-  ];
+  const [assignments, setAssignments] = useState<Assignment[]>([]);
 
   // State for the selected section
   const [selectedSection, setSelectedSection] = useState<string | null>(null);
+  const [showNewAssignmentModal, setShowNewAssignmentModal] = useState(false);
+
+  useEffect(() => {
+    // Define a query for the "assignments" collection
+    const q = query(collection(db, "assignments"));
+
+    // Set up a real-time subscription using onSnapshot
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      const fetchedAssignments: Assignment[] = [];
+      querySnapshot.forEach((doc) => {
+        // Push each fetched assignment into the array, include Firestore document ID
+        fetchedAssignments.push({
+          id: doc.id,
+          ...(doc.data() as Omit<Assignment, "id">),
+        });
+      });
+      // Update the state with the fetched assignments
+      setAssignments(fetchedAssignments);
+    });
+
+    // Return a cleanup function to unsubscribe from the listener when the component unmounts
+    return () => unsubscribe();
+  }, []);
 
   // Default to "No Name" if groupName is not provided
   const displayGroupName = groupName || "Group";
@@ -96,11 +100,11 @@ const GroupPage: React.FC<GroupPageProps> = ({ groupName, groupContent }) => {
         <div className="main-content-area">
           {/* Sidebar for Files, Group Chat, Assignments */}
           <div className="secondary-sidebar">
-          <button
+            <button
               className="sidebar-button"
               onClick={() => handleButtonClick("Files")}
             >
-              <FaRegFileAlt style={{ marginRight: '8px' }} />
+              <FaRegFileAlt style={{ marginRight: "8px" }} />
               Files
             </button>
 
@@ -108,14 +112,14 @@ const GroupPage: React.FC<GroupPageProps> = ({ groupName, groupContent }) => {
               className="sidebar-button"
               onClick={() => handleButtonClick("Group Chat")}
             >
-              <MdOutlineChat style={{ marginRight: '8px' }}/>
+              <MdOutlineChat style={{ marginRight: "8px" }} />
               Group Chat
             </button>
             <button
               className="sidebar-button"
               onClick={() => handleButtonClick("Assignments")}
             >
-              <MdOutlineAssignment style={{ marginRight: '8px' }} />
+              <MdOutlineAssignment style={{ marginRight: "8px" }} />
               Assignments
             </button>
           </div>
@@ -137,7 +141,40 @@ const GroupPage: React.FC<GroupPageProps> = ({ groupName, groupContent }) => {
             {selectedSection === "Assignments" && (
               <div>
                 <h3>Upcoming Assignments</h3>
-                {upcomingAssignments.map((assignment, index) => (
+                <button
+                  className="button"
+                  onClick={() => setShowNewAssignmentModal(true)}
+                >
+                  New Assignment
+                </button>{" "}
+                <br></br>
+                <br></br>
+                {showNewAssignmentModal && (
+                  <NewAssignmentModal
+                    onClose={() => setShowNewAssignmentModal(false)}
+                    onSave={async (newAssignment) => {
+                      try {
+                        const docRef = await addDoc(
+                          collection(db, "assignments"),
+                          {
+                            name: newAssignment.name,
+                            dueDate: newAssignment.dueDate,
+                            description: newAssignment.description,
+                          }
+                        );
+                        console.log("Document written with ID: ", docRef.id);
+                        setAssignments((currentAssignments) => [
+                          ...currentAssignments,
+                          { ...newAssignment, id: docRef.id },
+                        ]);
+                        setShowNewAssignmentModal(false);
+                      } catch (e) {
+                        console.error("Error adding document: ", e);
+                      }
+                    }}
+                  />
+                )}
+                {assignments.map((assignment, index) => (
                   <AssignmentCard key={index} assignment={assignment} />
                 ))}
               </div>
