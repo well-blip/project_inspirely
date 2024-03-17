@@ -2,7 +2,7 @@
 import { Route, Routes } from "react-router-dom";
 import Spaces from "./pages/spaces";
 
-import GroupPage from "./components/spaces/GroupPage";
+import GroupPage from "./components/spaces/IndividualGroupSpace/GroupPage";
 
 function App() {
   // const [count, setCount] = useState(0);
