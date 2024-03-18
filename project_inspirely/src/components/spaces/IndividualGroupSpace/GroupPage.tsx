@@ -13,7 +13,7 @@
 //Hello world
 
 import React, { useState, useEffect } from "react";
-import Sidebar from "./sidebar";
+import Sidebar from "../sidebar";
 import "./GroupPage.css";
 import FilesSectionContent from "./FilesSectionContent";
 import GroupChatSection from "./GroupChatSection";
@@ -23,7 +23,7 @@ import { FaRegFileAlt } from "react-icons/fa";
 import { MdOutlineChat } from "react-icons/md";
 import { MdOutlineAssignment } from "react-icons/md";
 import NewAssignmentModal from "./NewAssignmentModal";
-import { db } from "../../../firebase"; // Import the db object from firebase.tsx
+import { db } from "../../../../firebase"; // Import the db object from firebase.tsx
 import { collection, addDoc, query, onSnapshot } from "firebase/firestore";
 
 export interface Assignment {
