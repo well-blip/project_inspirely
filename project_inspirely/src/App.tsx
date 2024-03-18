@@ -1,6 +1,5 @@
-// import { useState } from "react";
-import { Route, Routes } from "react-router-dom";
-import Spaces from "./pages/spaces";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import GroupPage from "./components/spaces/IndividualGroupSpace/GroupPage";
 
