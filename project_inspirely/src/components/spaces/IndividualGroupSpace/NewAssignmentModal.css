@@ -1,0 +1,70 @@
+.new-assignment-modal {
+  position: fixed; /* Full page overlay */
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dim background */
+  display: flex;
+  align-items: center; /* Center modal vertically */
+  justify-content: center; /* Center modal horizontally */
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px; /* Limit max width */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Spacing between form elements */
+}
+
+input[type="text"],
+input[type="date"],
+textarea {
+  padding: 10px;
+  margin-bottom: 10px; /* Space below form elements */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end; /* Align buttons to the right */
+  gap: 10px; /* Space between buttons */
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold; /* Optional: makes the text bold */
+}
+
+button.cancel {
+  background-color: #6c757d; /* Grey for cancel button */
+  color: white;
+}
+
+button.cancel:hover {
+  background-color: #5a6268; /* Darken on hover */
+}
+
+button.save {
+  background-color: #360234; /* Blue for save button */
+  color: white;
+}
+
+button.save:hover {
+  background-color: #7983f2; /* Darken on hover */
+}

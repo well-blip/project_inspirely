@@ -1,57 +1,29 @@
-// import { useState } from 'react';
-// import "./sidebar.css";
-// import logo from "../../assets/logo.png"; // Make sure the path is correct
-
-// function Sidebar() {
-//   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-//   const randomGroups = ['MA210 Algebra 1', 'CH230 Chemistry', 'CS50 Computer Science', 'PS120 Physics', 'EN050 English FL', 'BO200 Biology I'];
-
-//   const toggleDropdown = () => {
-//     setIsDropdownOpen(!isDropdownOpen);
-//   };
-
-//    return (
-//     <div className="sidebar" id="sidebar">
-//       <div className="sidebar-top">
-//         <img src={logo} alt="App Logo" className="sidebar-logo" />
-//       </div>
-//       <hr className="divider" />
-//        <div className="sidebar-bottom">
-//          <p className='tiny-heading'> MAIN </p>
-//         <button className="sidebar-button">Dashboard</button>
-//         <button className="sidebar-button" onClick={toggleDropdown}>Spaces</button>
-//         {isDropdownOpen && (
-//           <div className="dropdown">
-//             {randomGroups.map((group, index) => (
-//               <button key={index} className="sidebar-button dropdown-button">{group}</button>
-//             ))}
-//           </div>
-//         )}
-//          <button className="sidebar-button">Schedule</button>
-//          <button className="sidebar-button">Chat</button>
-//          <p className='tiny-heading'> SETTINGS </p>
-//         <button className="sidebar-button">Notification</button>
-//         <button className="sidebar-button">Settings</button>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Sidebar;
-
-import React, { useState } from 'react';
+import React from 'react';
 import "./sidebar.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTachometerAlt, faBookOpen, faCalendarAlt, faComments, faBell, faCog } from '@fortawesome/free-solid-svg-icons';
-import logo from "../../assets/logo.png"; // Make sure the path is correct
+import { faHome, faCalendarAlt, faComments, faBell, faCog } from '@fortawesome/free-solid-svg-icons';
+import { PiHouseBold } from "react-icons/pi";
+import { MdOutlinePeopleAlt } from "react-icons/md";
+import { MdCalendarMonth } from "react-icons/md";
+import { PiChatsBold } from "react-icons/pi";
+import { PiBellSimpleBold } from "react-icons/pi";
+import { PiGearBold } from "react-icons/pi";
+
+
+
+import logo from "../../assets/logo.png"; 
+
+// import {useNavigate} from "react-router-dom";
 
 function Sidebar() {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const randomGroups = ['MA210 Algebra 1', 'CH230 Chemistry', 'CS50 Computer Science', 'PS120 Physics', 'EN050 English FL', 'BO200 Biology I'];
+  // let navigate = useNavigate();
 
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
+  // const navToSpace = () => {
+  //   navigate("/spaces"); // This will navigate to the Spaces component
+  // };
+  // const navToDash = () => {
+  //   navigate("/group"); // This will navigate to the Spaces component
+  // };
 
   return (
     <div className="sidebar" id="sidebar">
@@ -61,20 +33,31 @@ function Sidebar() {
       <hr className="divider" />
       <div className="sidebar-bottom">
         <p className='tiny-heading'> MAIN </p>
-        <button className="sidebar-button"><FontAwesomeIcon icon={faTachometerAlt} /> Dashboard</button>
-        <button className="sidebar-button" onClick={toggleDropdown}><FontAwesomeIcon icon={faBookOpen} /> Spaces</button>
-        {isDropdownOpen && (
-          <div className="dropdown">
-            {randomGroups.map((group, index) => (
-              <button key={index} className="sidebar-button dropdown-button">{group}</button>
-            ))}
-          </div>
-        )}
-        <button className="sidebar-button"><FontAwesomeIcon icon={faCalendarAlt} /> Schedule</button>
-        <button className="sidebar-button"><FontAwesomeIcon icon={faComments} /> Chat</button>
+        <button className="sidebar-button">
+          <PiHouseBold style={{ marginRight: '6px' }}/> 
+          Dashboard
+          </button>
+        <button className="sidebar-button">
+          <MdOutlinePeopleAlt style={{ marginRight: '6px' }}/> 
+          Spaces
+        </button>
+        <button className="sidebar-button">          
+        <MdCalendarMonth style={{ marginRight: '6px' }}/> 
+         Schedule
+         </button>
+        <button className="sidebar-button">
+        <PiChatsBold style={{ marginRight: '6px' }}/> 
+          Chat
+          </button>
         <p className='tiny-heading'> SETTINGS </p>
-        <button className="sidebar-button"><FontAwesomeIcon icon={faBell} /> Notification</button>
-        <button className="sidebar-button"><FontAwesomeIcon icon={faCog} /> Settings</button>
+        <button className="sidebar-button">
+        <PiBellSimpleBold style={{ marginRight: '6px' }}/> 
+           Notification
+           </button>
+        <button className="sidebar-button">
+        <PiGearBold style={{ marginRight: '6px' }}/> 
+          Settings
+          </button>
       </div>
     </div>
   );

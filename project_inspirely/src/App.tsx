@@ -1,12 +1,18 @@
-import { useState } from "react";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import GroupPage from "./components/spaces/IndividualGroupSpace/GroupPage";
 import Spaces from "./pages/spaces";
-import GroupPage from "./components/spaces/GroupPage";
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  return <Spaces />;
-  // return <GroupPage />; //to view GroupPage.tsx
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Spaces />} />{" "}
+        <Route path="/spaces" element={<Spaces />} />
+        <Route path="/group" element={<GroupPage />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;
