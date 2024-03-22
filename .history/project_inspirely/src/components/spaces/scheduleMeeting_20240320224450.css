@@ -1,0 +1,70 @@
+.schedule-meeting {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Align items to the start */
+
+  
+}
+
+.calendar-section,
+.details-section {
+  flex: 1;
+  margin-left: 250px;
+  margin-right: -120px;
+}
+
+.date-picker,
+.time-picker {
+  margin-bottom: 25px; /* Adjust margin as needed */
+}
+
+.meeting-details {
+  margin-bottom: 25px; /* Adjust margin as needed */
+}
+
+.meeting-type {
+  margin-bottom: 25px; /* Adjust margin as needed */
+}
+
+.schedule-meeting-button {
+  max-height: 50px;
+  align-self: flex-end;
+  color: #f5b740;
+  background-color: #23022e;
+  margin-top: 50px; /* Adjust margin as needed */
+  position: absolute;
+  top: 450px;
+  right: 400px;
+}
+
+.calendar-section {
+  max-width: 250px; /* Adjust max width as needed */
+  margin-right: 20px; /* Add margin between sections */
+}
+
+.details-section {
+  max-width: 50%; /* Adjust max width as needed */
+}
+
+.time-picker select {
+  width: 100%; /* Adjust width as needed */
+  height: auto; /* Adjust height as needed */
+  overflow-y: auto; /* Use auto to show scrollbar only when needed */
+}
+
+.time-picker select option {
+  overflow: : auto;
+  padding: 10px;
+}
+
+.meeting-type{
+  position: absolute;
+  top: 375px;
+  right: 500px;
+
+}
+.space-selection {
+  position: absolute;
+  top: 435px;
+  right: 420px;
+}

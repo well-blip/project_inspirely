@@ -1,0 +1,19 @@
+.meeting-card {
+    border: 1px solid #ccc;
+    border-color: #f5b740;
+    border-radius: 15px;
+    padding: 16px;
+    margin-bottom: 16px;
+    background-color: #23022e;
+  }
+  
+  .meeting-card h4 {
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+  
+  .meeting-card p {
+    margin: 4px 0;
+  }
+
+  
