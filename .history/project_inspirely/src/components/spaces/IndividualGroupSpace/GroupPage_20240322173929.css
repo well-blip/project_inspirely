@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+.group-page-container {
+  display: flex;
+  height: 100vh; /* Adjust as needed */
+}
+
+.group-page-content {
+  flex: 1;
+  /* padding: 20px; */
+}
+
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  font-family: "Poppins", sans-serif;
+  align-items: center;
+  margin-top: 1.85rem;
+  margin-bottom: 1.8rem;
+  padding-left: 5rem;
+  padding: 0;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.header-buttons button {
+  padding: 10px;
+  background-color: #230222; /* Adjust as needed */
+  color: #fff; /* Adjust as needed */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.header-buttons button:hover {
+  background-color: #7983f2; /* Adjust as needed */
+}
+
+.main-content-area {
+  display: flex;
+  gap: 20px;
+}
+
+.secondary-sidebar {
+  width: 150px;
+  background-color: #f0f0f0; /* Adjust as needed */
+  padding: 10px;
+}
+
+.vertical-divider {
+  border-left: 1px solid #ccc; /* Adjust color as needed */
+  height: 100%;
+}
+
+.section-content {
+  flex: 1;
+}
+
+.secondary-sidebar button {
+  width: 100%;
+  padding: 10px;
+  text-align: left;
+  background-color: #fff; /* Adjust as needed */
+  border: none;
+  border-bottom: 1px solid #ccc; /* Adjust as needed */
+  cursor: pointer;
+}
+.vertical-divider {
+  border-left: 1px solid #ccc; /* Adjust color as needed */
+  height: 100%;
+}
+
+.secondary-sidebar button:hover {
+  background-color: #f0f0f0; /* Adjust as needed */
+}
+
+/* Add this CSS to your GroupPage.css or a relevant stylesheet */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+/* Add any additional styling as needed */

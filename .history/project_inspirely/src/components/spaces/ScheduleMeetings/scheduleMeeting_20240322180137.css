@@ -1,0 +1,81 @@
+ scheduleMeeting.css
+
+.schedule_page-container {
+    display: flex;
+    height: 100vh; /* Adjust as needed */
+} 
+  
+  .schedule_page-content {
+    flex: 1;
+    /* padding: 20px; */
+  }
+
+  .secondary-sidebar {
+    width: 150px;
+    background-color: #f0f0f0; /* Adjust as needed */
+    padding: 10px;
+  }
+  .secondary-sidebar button {
+    width: 100%;
+    padding: 10px;
+    text-align: left;
+    background-color: #fff; /* Adjust as needed */
+    border: none;
+    border-bottom: 1px solid #ccc; /* Adjust as needed */
+    cursor: pointer;
+  }
+  
+  
+  .sidebar-button {
+    display: block;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .sidebar-button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .schedule-meeting {
+    flex: 3;
+    padding: 20px;
+  }
+  
+  .calendar-section {
+    margin-bottom: 20px;
+  }
+  
+  .date-picker, .time-picker, .meeting-type, .space-selection, .details-section {
+    margin-bottom: 20px;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"], select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .schedule-meeting-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .schedule-meeting-button:hover {
+    background-color: #0056b3;
+  }
+   */

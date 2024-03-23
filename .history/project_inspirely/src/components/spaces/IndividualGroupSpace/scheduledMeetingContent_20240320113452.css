@@ -1,0 +1,43 @@
+.assignment-notification-card {
+    position: relative;
+    margin-bottom: 10px;
+  }
+  
+  .notification-display {
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .sender-time {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+  
+  .sender {
+    font-weight: bold;
+  }
+  
+  .time {
+    color: #666;
+  }
+  
+  .content {
+    line-height: 1.4;
+  }
+  
+  .c-button {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    cursor: pointer;
+    color: #666;
+  }
+  
+  .c-button:hover {
+    color: #333;
+  }
+  
