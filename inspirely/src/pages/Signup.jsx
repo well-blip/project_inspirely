@@ -1,6 +1,6 @@
   import React from 'react';
-  import '../signup-login.css';
-  import SignUpContainer from '../components/SignUpContainer';
+  import '../components/Authenticate/signup-login.css';
+  import SignUpContainer from '../components/Authenticate/SignUpContainer.jsx';
     
 
   const SignUp = () => {

@@ -2,11 +2,11 @@ import React from "react";
 import { AiFillMobile } from "react-icons/ai";
 import { MdEmail } from "react-icons/md";
 import { MdOutlinePassword } from "react-icons/md";
-import '../signup-login.css';
+import './signup-login.css';
 import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { signInWithPopup } from "firebase/auth";
-import { app, auth, googleAuthProvider } from '../firebase.js';
+import { app, auth, googleAuthProvider } from '../../firebase.js';
 import { useNavigate } from "react-router-dom";
 import GoogleButton from 'react-google-button';
 
@@ -14,6 +14,9 @@ const SignUpContent = ({ onNextClick }) => {
 
     const [registerEmail, setRegisterEmail] = useState();
     const [registerPassword, setRegisterPassword] = useState();
+    const [firstName, setFirstName] = useState();
+    const [lastName, setLastName] = useState();
+    const [phoneNumber, setPhoneNumber] = useState();
 
     const navigate = useNavigate();
 
@@ -25,7 +28,7 @@ const SignUpContent = ({ onNextClick }) => {
             const user = userCredential.user;
             localStorage.setItem('token', user.accessToken);
             localStorage.setItem('user', JSON.stringify(user));
-            
+
         } catch (error) {
             console.error('Error signing up:', error.message);
         }
@@ -44,7 +47,7 @@ const SignUpContent = ({ onNextClick }) => {
         }
     }
     //function calls handleSignup function and onnextclick
-    const handleNextClick = () =>{
+    const handleNextClick = () => {
         handleSignup();
         onNextClick();
     }

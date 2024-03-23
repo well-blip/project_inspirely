@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import '../signup-login.css';
-import SignUpImage from '../components/signUpImage';
-import SignUpContent from '../components/SignUpContent';
-import Signup2 from '../pages/Signup2';
+import './signup-login.css';
+import SignUpImage from './SignUpImage';
+import SignUpContent from './SignUpContent';
+import Signup2 from '../../pages/Signup2';
 
 const SignUpContainer = () => {
   const [showSignup2, setShowSignup2] = useState(false);

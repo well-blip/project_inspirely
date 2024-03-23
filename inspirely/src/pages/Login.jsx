@@ -1,13 +1,14 @@
 import React from "react";
-import '../signup-login.css';
+import '../components/Authenticate/signup-login.css';
 import { MdEmail } from "react-icons/md";
 import { MdOutlinePassword } from "react-icons/md";
-import SignUpImage from '../components/signUpImage';
+import SignUpImage from '../components/Authenticate/SignUpImage.jsx';
 import { useState } from "react";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { app, auth, googleAuthProvider } from '../firebase.js';
 import { Link, useNavigate } from "react-router-dom";
 import GoogleButton from 'react-google-button';
+import ForgotPassword from "./ForgotPassword.jsx";
 
 const Login = () => {
 
@@ -24,7 +25,7 @@ const Login = () => {
       const user = userCredential.user;
       localStorage.setItem('token', user.accessToken);
       localStorage.setItem('user', JSON.stringify(user));
-      navigate("/");
+      navigate("/homepage");
 
     } catch (error) {
       console.error('Error signing up:', error.message);
@@ -34,13 +35,13 @@ const Login = () => {
   }
 
   //authenticates the user with google credentials
-  const handleLogInWithGoogle = async() =>{
+  const handleLogInWithGoogle = async () => {
     try {
       const result = await signInWithPopup(auth, googleAuthProvider);
       console.log(result);
       localStorage.setItem('token', result.user.accessToken);
       localStorage.setItem('user', JSON.stringify(result.user));
-      navigate("/");
+      navigate("/homepage");
     } catch (error) {
       console.error(error);
     }
@@ -61,11 +62,11 @@ const Login = () => {
           <MdOutlinePassword style={{ fontSize: '40px', margin: '5px 20px', color: "grey" }} />
           <input type="password" placeholder="Enter password" onChange={(event) => { setPassword(event.target.value); }} />
         </div>
-        <GoogleButton  style={{backgroundColor:'#f5f5f5',color:'#333', border:'none',padding:'8px 20px', borderRadius:'4px'}}
-          onClick={handleLogInWithGoogle }
+        <GoogleButton style={{ backgroundColor: '#f5f5f5', color: '#333', border: 'none', padding: '8px 20px', borderRadius: '4px' }}
+          onClick={handleLogInWithGoogle}
         />
         <div className="forgot-password">
-          <a href="https://www.google.com" >Forgot Password or Username</a>
+          <a href="./reset" >Forgot Password or Username</a>
         </div>
         <div className="forgot-password">
           <a href="./signup" >Dont have an account?</a>
