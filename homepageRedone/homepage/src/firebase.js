@@ -3,13 +3,15 @@ import { GoogleAuthProvider, getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore"
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA-D38NBCBLIGqVXUy1ZU3Ar40kGFVQFeA",
-  authDomain: "inspirely-213.firebaseapp.com",
-  projectId: "inspirely-213",
-  storageBucket: "inspirely-213.appspot.com",
-  messagingSenderId: "1090905298711",
-  appId: "1:1090905298711:web:02476dcc60fcdf08d50952"
+  apiKey: "AIzaSyCDdIHBM4K_YLMW4Zax__sCOcGHloym6XY",
+  authDomain: "inspirely-project.firebaseapp.com",
+  projectId: "inspirely-project",
+  storageBucket: "inspirely-project.appspot.com",
+  messagingSenderId: "17603880870",
+  appId: "1:17603880870:web:4576ffc867172e5fc81167",
+  measurementId: "G-WSCBT3MLHZ",
 };
+
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const googleAuthProvider = new GoogleAuthProvider();

@@ -1,11 +1,11 @@
-import * as React from "react";
+import { useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import AddIcon from "@mui/icons-material/Add";
 import { TextField } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { addDocument } from "../src/firebaseConfig"; // Adjust this import path to where your addDocument function is located
 
 const style = {
   position: "absolute",
@@ -20,14 +20,28 @@ const style = {
 };
 
 export default function BasicModal() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [docTitle, setDocTitle] = useState(""); // State to hold the document title
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  let navigate = useNavigate();
-  const routeChange = (tempName) => {
-    let path = `https://pad.riseup.net/p/IO_wS${tempName}rsq6000`;
-    window.location.href = path; // This will navigate to an external site
+
+  const handleCreateDocument = async () => {
+    // Generate a unique part for the pathDoc
+    const tempName = Date.now(); // This is just an example; you can make it more sophisticated
+    const pathDoc = `https://pad.riseup.net/p/${tempName}`;
+
+    // Add the document to Firestore
+    await addDocument({
+      title: docTitle,
+      pathDoc: pathDoc,
+    });
+
+    // Optionally, navigate to the document or close the modal
+    setOpen(false); // Close the modal after creation
+    window.location.href = pathDoc; // Or navigate to the document's URL
   };
+
   return (
     <div>
       <Button onClick={handleOpen}>
@@ -47,15 +61,19 @@ export default function BasicModal() {
           <TextField
             required
             id="outlined-required"
-            label="Required"
-            defaultValue="Hello World"
-            
+            label="Document Title"
+            defaultValue=""
+            onChange={(e) => setDocTitle(e.target.value)} // Update the docTitle state when the input changes
           />
           <div
             className="spacer"
             style={{ height: "30px", width: "0px" }}
           ></div>
-          <Button variant="contained" color="success" onClick={ routeChange }>
+          <Button
+            variant="contained"
+            color="success"
+            onClick={handleCreateDocument}
+          >
             Create
           </Button>
         </Box>

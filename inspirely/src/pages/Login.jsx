@@ -21,7 +21,6 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      console.log(userCredential);
       const user = userCredential.user;
       localStorage.setItem('token', user.accessToken);
       localStorage.setItem('user', JSON.stringify(user));
@@ -38,11 +37,11 @@ const Login = () => {
   const handleLogInWithGoogle = async () => {
     try {
       const result = await signInWithPopup(auth, googleAuthProvider);
-      localStorage.setItem('user', auth.currentUser.displayName);
-      console.log(auth.currentUser.displayName);
-      localStorage.setItem('token', result.user.accessToken);
-      // localStorage.setItem('user', JSON.stringify(result.user));
+      const user = result.user;
+      localStorage.setItem('user', JSON.stringify(user)); // Store the entire user object
+      localStorage.setItem('token', user.accessToken);
       window.location.replace("http://localhost:3002/");
+      console.log(result);  
     } catch (error) {
       console.error(error);
     }

@@ -1,7 +1,7 @@
 import React, { SetStateAction, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import './scheduleMeeting.css';
+import './scheduleMeeting.module.css';
 import { addDocument, db } from '../../../firebase';
 import Sidebar from "../spaces/sidebar";
 

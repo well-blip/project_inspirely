@@ -1,6 +1,6 @@
 // Popup.tsx
 import React, { useState } from 'react';
-import './popup.css'; // Import CSS file
+import './popup.module.css'; // Import CSS file
 import { AiOutlineClose } from 'react-icons/ai'; // Import close icon from react-icons
 import DatePicker from 'react-datepicker'; // Import DatePicker component
 import 'react-datepicker/dist/react-datepicker.css'; // Import DatePicker styles

@@ -23,31 +23,20 @@ import logo from "../../assets/Logo.png";
 // import {useNavigate} from "react-router-dom";
 
 function Sidebar() {
-  // let navigate = useNavigate();
-
-  // const navToSpace = () => {
-  //   navigate("/spaces"); // This will navigate to the Spaces component
-  // };
-  // const navToDash = () => {
-  //   navigate("/group"); // This will navigate to the Spaces component
-  // };
-
   const user = JSON.parse(localStorage.getItem('user'));
-  console.log(user, "This isfrom sidebar");
-  // const navigate = useNavigate();
-  // const handleLogout = async () => {
-  //   try {
-  //     await signOut(auth);
-  //     localStorage.removeItem('token');
-  //     localStorage.removeItem('user');
-  //     navigate("http://localhost:5173/");
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
-
-
-
+  const userEmail = user ? user.email : null;
+  console.log(userEmail);
+  const navigate = useNavigate();
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      window.location.replace("http://localhost:3001/");
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <div className="sidebar" id="sidebar" style={{ marginLeft: "12px" }}>
@@ -56,15 +45,15 @@ function Sidebar() {
       </div>
       <hr className="divider" />
       <div className="sidebar-bottom">
-        <h1 style={{ fontSize: '10px' }}>{user && user.email}</h1>
-        <a href="http://localhost:3001/">
-          <button style={{
-            fontSize: '0.75rem', // smaller font size
-            borderRadius: '0.5rem', // rounded corners
-            padding: '0.5rem 1rem', // padding for spacing
+        <h1 style={{ fontSize: '10px' }}>{userEmail}</h1>
+
+        <button onClick={handleLogout} style={{
+          fontSize: '0.75rem', // smaller font size
+          borderRadius: '0.5rem', // rounded corners
+          padding: '0.5rem 1rem', // padding for spacing
 
 
-          }}>Logout</button></a>
+        }}>Logout</button>
         <div className="options" >
           <p className="tiny-heading"> MAIN </p>
 
@@ -84,7 +73,7 @@ function Sidebar() {
             </button>
           </a>
 
-          <a href="http://localhost:3003/group">
+          <a href="http://localhost:3003/spaces">
             <button className="sidebar-button">
               <span style={{ fontWeight: 'bold', color: 'black' }}>
                 <MdOutlinePeopleAlt style={{ marginRight: "6px" }} />
@@ -92,7 +81,7 @@ function Sidebar() {
             </button>
           </a>
 
-          <a href="http://localhost:9000">
+          <a href="http://localhost:3003/group">
             <button className="sidebar-button">
               <span style={{ fontWeight: 'bold', color: 'black' }}>
                 <MdCalendarMonth style={{ marginRight: "6px" }} />
@@ -100,7 +89,7 @@ function Sidebar() {
             </button>
           </a>
 
-          <a href="http://localhost:3000">
+          <a href="http://localhost:1234">
             <button className="sidebar-button">
               <span style={{ fontWeight: 'bold', color: 'black' }}>
                 <PiChatsBold style={{ marginRight: "6px" }} />

@@ -1,0 +1,78 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  background-color: #fff;
+  color: black;
+  /* padding: 20px; */
+  width: 12%;
+  border-right: 1px solid #d3d3d3;
+}
+
+.sidebar-top {
+  padding: 10px;
+}
+
+.sidebar-logo {
+  /* Set your logo size and any margins if needed */
+  display: block;
+  margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  /* Adjust as needed */
+}
+
+.sidebar-bottom {
+  /* Style for the bottom part containing links */
+  flex-grow: 1;
+  margin-top: 12px;
+}
+
+.sidebar h2 {
+  color: #fff;
+  margin-bottom: 20px;
+  /* Spacing before the list */
+}
+
+.divider {
+  border: none;
+  height: 1px;
+  background-color: #d3d3d3;
+  width: 100%;
+  margin: 0;
+}
+
+.sidebar-button {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 10px 20px;
+  color: inherit;
+  /* Inherits the color from the parent element */
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.sidebar-button:hover {
+  background-color: #e3e3e3;
+  /* Light grey background on hover */
+}
+
+.dropdown-button {
+  padding-left: 40px;
+  /* Indent dropdown items */
+}
+
+.tiny-heading {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  /* padding: 10px 20px; */
+  padding-left: 20px;
+  color: inherit;
+  font-size: 10px;
+}

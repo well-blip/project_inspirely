@@ -11,7 +11,6 @@
 //     return <GroupPage groupName="My Group" groupContent={myGroupContent} />;
 //   };
 //Hello world
-// GroupPage.tsx
 
 import React, { useState, useEffect } from "react";
 import Sidebar from "../sidebar";
@@ -19,15 +18,18 @@ import "./GroupPage.css";
 import FilesSectionContent from "./FilesSectionContent";
 import GroupChatSection from "./GroupChatSection";
 import ScheduledMeetingContent from "./scheduledMeetingContent";
-import AssignmentCard from "./AssignmentCard"; // Import the AssignmentCard component
+import AssignmentCard from "./AssignmentCard";
 import AssignmentsDetailModal from "./AssignmentsDetailModal";
 import { FaRegFileAlt } from "react-icons/fa";
 import { MdOutlineChat, MdOutlineAssignment, MdOutlineSchedule } from "react-icons/md";
 import NewAssignmentModal from "./NewAssignmentModal";
-import { db } from "../../../../firebase"; // Import the db object from firebase.tsx
+import { db } from "../../../../firebase";
 import { collection, addDoc, query, onSnapshot } from "firebase/firestore";
+import { Button, Modal, Box, IconButton } from '@mui/material';
 import ScheduleMeeting from "../scheduleMeeting";
-import { Button, Modal, Box } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import BoxBasic from "../../../../../docColab/components/listTemp";
+
 
 export interface Assignment {
   id?: string;
@@ -42,56 +44,49 @@ interface GroupPageProps {
 }
 
 const GroupPage: React.FC<GroupPageProps> = ({ groupName, groupContent }) => {
-  // Dummy data for assignments
   const [assignments, setAssignments] = useState<Assignment[]>([]);
-
-  // State for the selected section
   const [selectedSection, setSelectedSection] = useState<string | null>(null);
   const [showNewAssignmentModal, setShowNewAssignmentModal] = useState(false);
+  const [showScheduleMeetingModal, setShowScheduleMeetingModal] = useState(false);
 
   useEffect(() => {
-    // Define a query for the "assignments" collection
     const q = query(collection(db, "assignments"));
-
-    // Set up a real-time subscription using onSnapshot
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       const fetchedAssignments: Assignment[] = [];
       querySnapshot.forEach((doc) => {
-        // Push each fetched assignment into the array, include Firestore document ID
         fetchedAssignments.push({
           id: doc.id,
           ...(doc.data() as Omit<Assignment, "id">),
         });
       });
-      // Update the state with the fetched assignments
       setAssignments(fetchedAssignments);
     });
-
-    // Return a cleanup function to unsubscribe from the listener when the component unmounts
     return () => unsubscribe();
   }, []);
 
-  // Default to "No Name" if groupName is not provided
   const displayGroupName = groupName || "Group";
 
   const handleButtonClick = (section: string) => {
     setSelectedSection(section);
   };
-  const handleOpenModal = () => {
-    setOpenModal(true);
+
+  const handleOpenScheduleMeetingModal = () => {
+    setShowScheduleMeetingModal(true);
   };
 
-  const handleCloseModal = () => {
-    setOpenModal(false);
+  const handleCloseScheduleMeetingModal = () => {
+    setShowScheduleMeetingModal(false);
   };
+
   const modalStyle = {
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    width: '120%', // Adjust width as per your requirement
+    maxWidth: 600, // Maximum width for responsiveness
+    maxHeight: '100vh', // Maximum height for responsiveness
     bgcolor: 'background.paper',
-    border: '2px solid #000',
     boxShadow: 24,
     p: 4,
   };
@@ -99,77 +94,44 @@ const GroupPage: React.FC<GroupPageProps> = ({ groupName, groupContent }) => {
   return (
     <div className="group-page-container">
       <Sidebar />
-
       <div className="group-page-content">
-        {/* Header section */}
         <div className="content-header">
           <h2 className="group-title">{displayGroupName}</h2>
-          {/* Buttons for Schedule, Join, Start Meeting, Profile */}
-          <div
-            className="header-buttons"
-            style={{ marginLeft: "auto", padding: "10px" }}
-          >
-            <Button onClick={handleOpenModal}>Schedule Meeting</Button>
-            <Modal
-               open={handleCloseModal}
-                onClose={handleCloseModal}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-      >
-        <Box sx={modalStyle}>
-          <ScheduleMeeting />
-        </Box>
-      </Modal>
-            <button className="button">Join Meeting</button>
-            <button className="button">Start Meeting</button>
-            <button className="button">Profile</button>
+          <div className="header-buttons" style={{ marginLeft: "auto", padding: "10px" }}>
+            <button className="button" onClick={handleOpenScheduleMeetingModal}>Schedule Meeting</button>
+            <button className="button" onClick={() => window.open('http://localhost:9000', '_blank')}>Join Meeting</button>
+            <button className="button" onClick={() => window.open('http://localhost:9000', '_blank')}>Start Meeting</button>
+            {/* <button className="button">Profile</button> */}
           </div>
         </div>
         <hr className="divider" />
-        <br></br>
-        {/* Main content area */}
+        <br />
         <div className="main-content-area">
-          {/* Sidebar for Files, Group Chat, Assignments */}
           <div className="secondary-sidebar">
-            <button
-              className="sidebar-button"
-              onClick={() => handleButtonClick("Files")}
-            >
+            <button className="sidebar-button" onClick={() => handleButtonClick("Files")}>
               <FaRegFileAlt style={{ marginRight: "8px" }} />
               Files
             </button>
 
-            <button
-              className="sidebar-button"
-              onClick={() => handleButtonClick("Group Chat")}
-            >
+            <button className="sidebar-button" onClick={() => {window.location.replace("http://localhost:3000")}}>
               <MdOutlineChat style={{ marginRight: "8px" }} />
               Group Chat
             </button>
-            <button
-              className="sidebar-button"
-              onClick={() => handleButtonClick("Assignments")}
-            >
+            <button className="sidebar-button" onClick={() => handleButtonClick("Assignments")}>
               <MdOutlineAssignment style={{ marginRight: "8px" }} />
               Assignments
             </button>
-            {/* Added button for Scheduled Meetings */}
-            <button
-              className="sidebar-button"
-              onClick={() => handleButtonClick("Meetings")}
-            >
+
+            <button className="sidebar-button" onClick={() => handleButtonClick("Meetings")}>
               <MdOutlineSchedule style={{ marginRight: "8px" }} />
               Scheduled Meetings
             </button>
           </div>
           <div className="vertical-divider"></div>
-
-          {/* Content area for each section */}
           <div className="section-content">
-            {/* Conditional rendering based on the selected section */}
             {selectedSection === "Files" && (
               <div>
-                <FilesSectionContent />
+                <BoxBasic />
               </div>
             )}
             {selectedSection === "Group Chat" && (
@@ -180,27 +142,21 @@ const GroupPage: React.FC<GroupPageProps> = ({ groupName, groupContent }) => {
             {selectedSection === "Assignments" && (
               <div>
                 <h3>Upcoming Assignments</h3>
-                <button
-                  className="button"
-                  onClick={() => setShowNewAssignmentModal(true)}
-                >
+                <button className="button" onClick={() => setShowNewAssignmentModal(true)}>
                   New Assignment
-                </button>{" "}
-                <br></br>
-                <br></br>
+                </button>
+                <br />
+                <br />
                 {showNewAssignmentModal && (
                   <NewAssignmentModal
                     onClose={() => setShowNewAssignmentModal(false)}
                     onSave={async (newAssignment) => {
                       try {
-                        const docRef = await addDoc(
-                          collection(db, "assignments"),
-                          {
-                            name: newAssignment.name,
-                            dueDate: newAssignment.dueDate,
-                            description: newAssignment.description,
-                          }
-                        );
+                        const docRef = await addDoc(collection(db, "assignments"), {
+                          name: newAssignment.name,
+                          dueDate: newAssignment.dueDate,
+                          description: newAssignment.description,
+                        });
                         console.log("Document written with ID: ", docRef.id);
                         setAssignments((currentAssignments) => [
                           ...currentAssignments,
@@ -218,21 +174,34 @@ const GroupPage: React.FC<GroupPageProps> = ({ groupName, groupContent }) => {
                 ))}
               </div>
             )}
-            {/* Add your logic to display scheduled meetings */}
             {selectedSection === "Meetings" && (
               <div>
-                <ScheduledMeetingContent/>
+                <ScheduledMeetingContent />
               </div>
             )}
           </div>
         </div>
       </div>
+
+      <Modal
+        open={showScheduleMeetingModal}
+        onClose={handleCloseScheduleMeetingModal}
+        aria-labelledby="schedule-meeting-modal-title"
+      >
+        <Box sx={modalStyle}>
+          <ScheduleMeeting />
+          {/* Close button */}
+          <IconButton
+            aria-label="close"
+            style={{ position: 'absolute', top: 0, right: 0 }}
+            onClick={handleCloseScheduleMeetingModal}
+          >
+            <CloseIcon />
+          </IconButton>
+        </Box>
+      </Modal>
     </div>
   );
 };
 
 export default GroupPage;
-function setOpenModal(arg0: boolean) {
-  throw new Error("Function not implemented.");
-}
-

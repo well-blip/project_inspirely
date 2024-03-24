@@ -7,7 +7,6 @@
 }
 
 
-
 /* Content container styles */
 .schedule_page-content {
   flex: 1;
@@ -21,18 +20,6 @@
   margin-bottom: 20px;
 }
 
-/* Button styles */
-.sidebar-button {
-  display: flex;
-  align-items: center;
-  padding: 10px 20px;
-  margin-right: 20px;
-  border: none;
-  border-radius: 5px;
-  background-color: #23022e; /* Background color */
-  color: white;
-  cursor: pointer;
-}
 
 .sidebar-button:last-child {
   margin-right: 0;
@@ -86,23 +73,15 @@
 
 .meeting-details input[type="text"] {
   width: 100%;
-  padding: 8px;
+  padding: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-
-/* Schedule meeting button styles */
-.schedule-meeting-button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  background-color: #23022e; /* Background color */
-  color: white;
-  cursor: pointer;
-}
-
-.schedule-meeting-button:hover {
-  background-color: #3b033f; /* Darker color on hover */
+.schedule-meeting-button{
+  width: 150px;
+  height: min-content;
+  align-self: flex-end;
+  background-color: #23022e;
 }
 
 /* UpdateMeetingContent styles */

@@ -26,7 +26,7 @@
 // export default Popup;
 
 import React from 'react';
-import './Popup.css'; 
+import './Popup.module.css'; 
 import { PiGearBold } from "react-icons/pi";
 import { PiTrashBold } from "react-icons/pi";
 
