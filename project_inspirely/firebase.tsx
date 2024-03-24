@@ -9,7 +9,7 @@ const firebaseConfig = {
   storageBucket: "project-inspirely.appspot.com",
   messagingSenderId: "541004153858",
   appId: "1:541004153858:web:d8a81c4a0883d49b73d31b",
-  measurementId: "G-MDH4Z659K2"
+  measurementId: "G-MDH4Z659K2",
 };
 
 // Initialize Firebase

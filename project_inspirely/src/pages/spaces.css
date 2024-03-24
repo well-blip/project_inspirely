@@ -16,3 +16,11 @@
   gap: 20px;
   /* Add more styles for the grid layout */
 }
+
+.sidebar-logo {
+  display: block;
+  margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 50px;
+}
