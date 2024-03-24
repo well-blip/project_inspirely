@@ -3,7 +3,7 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import Line from "./components/line";
-import logo from "./assets/logo.png";
+import logo from "./assets/Logo.png";
 import Sidebar from "./components/sidebar/sidebar";
 import MultiActionAreaCard from "./components/card/card";
 import WhatsHappening from "./components/card/whatsonyourmindCard";
@@ -13,6 +13,8 @@ import DateCalendarValue from "./components/calender/calender";
 
 function App() {
   return (
+
+
     <div>
       {/* Header area with logo and WhatsHappening component */}
       <div

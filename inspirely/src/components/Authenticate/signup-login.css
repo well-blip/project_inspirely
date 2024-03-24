@@ -1,0 +1,192 @@
+body {
+  background-color: white;
+}
+
+.heading1 {
+  font-size: large;
+  color: #383838;
+}
+
+.paragraph {
+  font: size 10px;
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+.signup-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px;
+  color: black;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.signup-content {
+  width: 60%;
+  text-align: left;
+}
+
+.head {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.name-boxes {
+  display: flex;
+  gap: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.name-box {
+  background-color: #ffffff;
+  padding: 10px;
+  border: 0px solid #ccc;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  height: 50px;
+  width: 250px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
+.name-box:first-child {
+  margin-right: 50px;
+}
+
+.mobile-number,
+.email,
+.password {
+  display: flex;
+  gap: 10px;
+  background-color: #ffffff;
+  padding: 10px;
+  width: 86%;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  height: 50px;
+  margin-bottom: 30px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.mobile-number img {
+  margin: 20px 20px;
+
+
+}
+
+.next {
+  background-color: #23022E;
+  color: white;
+  width: 150px;
+  height: 70px;
+  border-radius: 10px;
+  text-align: left;
+  padding: 10px;
+  font-weight: bold;
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border-width: 0px;
+  margin-top: 40px;
+  margin-left: 100px;
+}
+
+.next-login {
+  background-color: #23022E;
+  color: white;
+  width: 150px;
+  height: 70px;
+  border-radius: 10px;
+  text-align: left;
+  padding: 10px;
+  font-weight: bold;
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border-width: 0px;
+  margin-top: 40px;
+  margin-left: 300px;
+}
+
+.exist-account {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-right: 0;
+
+}
+
+.exist-account-next {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  border: none;
+  font-size: 16px;
+  color: black;
+  padding: 10px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: transparent;
+  font-size: 25px;
+}
+
+
+.signup-image {
+  width: 30%;
+}
+
+
+.signup-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.actions {
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  margin-right: -50%;
+}
+
+
+.forgot-password {
+  margin-top: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 20px;
+  color: #296dff;
+}
+
+.next-button {
+  text-decoration: none;
+}
+
+.choices {
+  display: flex;
+  gap: 70px;
+  height: 100px;
+  width: 10px;
+}
+
+.choice-button {
+  background-color: #F8E4B6;
+  color: black;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  cursor: pointer;
+  border-radius: 10px;
+
+
+}
+
+.google-button {
+  background-color: #383838;
+}

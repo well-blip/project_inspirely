@@ -18,14 +18,14 @@ function App() {
   }, []);
 
   return (
-    // <Router>
-    //   <Routes>
-    //     <Route path="/" element={<Spaces />} />{" "}
-    //     <Route path="/spaces" element={<Spaces />} />
-    //     <Route path="/group" element={<GroupPage />} />
-    //   </Routes>
-    // </Router>
-   <GroupPage/>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Spaces />} />{" "}
+        <Route path="/spaces" element={<Spaces />} />
+        <Route path="/group" element={<GroupPage />} />
+      </Routes>
+    </Router>
+   
   );
 }
 
