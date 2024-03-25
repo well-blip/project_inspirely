@@ -1,0 +1,93 @@
+/* scheduleMeeting.css */
+
+/* Container for the entire page */
+.schedule_page-container {
+  display: flex;
+  height: 100vh; /* Use the full viewport height */
+}
+
+/* Content container styles */
+.schedule_page-content {
+  padding: 20px;
+  max-width: 600px; /* Limit content width for better readability */
+}
+
+/* Header styles */
+.content-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+
+
+
+
+/* Schedule meeting section styles */
+.schedule-meeting {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center horizontally */
+  border:#1f2e02
+}
+
+/* Calendar section styles */
+.calendar-section {
+  margin-bottom: 20px;
+}
+
+/* Date picker styles */
+.date-picker {
+  margin-bottom: 20px;
+}
+
+/* Time picker styles */
+.time-picker {
+  margin-bottom: 20px;
+}
+
+/* Meeting type styles */
+.meeting-type {
+  margin-bottom: 20px;
+}
+
+.meeting-type input[type="radio"] {
+  margin-right: 10px;
+}
+
+/* Space selection styles */
+.space-selection {
+  margin-bottom: 20px;
+}
+
+/* Details section styles */
+.details-section {
+  width: 100%; /* Ensure details section takes full width */
+  max-width: 400px; /* Limit details section width */
+}
+
+/* Meeting details styles */
+.meeting-details {
+  margin-bottom: 20px;
+}
+
+.meeting-details input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Schedule meeting button styles */
+.schedule-meeting-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #23022e; /* Background color */
+  color: white;
+  cursor: pointer;
+}
+
+.schedule-meeting-button:hover {
+  background-color: #3b033f; /* Darker color on hover */
+}

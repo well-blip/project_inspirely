@@ -1,0 +1,26 @@
+.spaces-container {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+.spaces-title {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.spaces-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  /* Add more styles for the grid layout */
+}
+
+.sidebar-logo {
+  display: block;
+  margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 50px;
+}

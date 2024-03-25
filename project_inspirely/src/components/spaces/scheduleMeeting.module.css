@@ -1,0 +1,88 @@
+/* scheduleMeeting.css */
+
+/* Container for the entire page */
+.schedule_page-container {
+  display: flex;
+  height: 100%;
+}
+
+
+/* Content container styles */
+.schedule_page-content {
+  flex: 1;
+  padding: 20px;
+}
+
+/* Header styles */
+.content-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+
+.sidebar-button:last-child {
+  margin-right: 0;
+}
+
+/* Schedule meeting section styles */
+.schedule-meeting {
+  display: flex;
+  margin-top: 20px;
+}
+
+/* Calendar section styles */
+.calendar-section {
+  flex: 1;
+  margin-right: 20px;
+}
+
+/* Date picker styles */
+.date-picker {
+  margin-bottom: 20px;
+}
+
+/* Time picker styles */
+.time-picker {
+  margin-bottom: 20px;
+}
+
+/* Meeting type styles */
+.meeting-type {
+  margin-bottom: 20px;
+}
+
+.meeting-type input[type="radio"] {
+  margin-right: 10px;
+}
+
+/* Space selection styles */
+.space-selection {
+  margin-bottom: 20px;
+}
+
+/* Details section styles */
+.details-section {
+  flex: 1;
+}
+
+/* Meeting details styles */
+.meeting-details {
+  margin-bottom: 20px;
+}
+
+.meeting-details input[type="text"] {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.schedule-meeting-button{
+  width: 150px;
+  height: min-content;
+  align-self: flex-end;
+  background-color: #23022e;
+}
+
+/* UpdateMeetingContent styles */
+/* Add styles for the UpdatedMeetingContent component here */

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Modal from './modal'; 
 import Popup from './Popup'; 
-import './body.css'; 
+import './body.module.css'; 
 // import './modal.css';
 import { CgMoreO } from "react-icons/cg";
 import { FaBell } from "react-icons/fa";

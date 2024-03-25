@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import './modal.css';
+import './modal.module.css';
 
 interface Card {
   id: string;

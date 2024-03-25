@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { SetStateAction, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import './scheduleMeeting.css';
-//import { db } from './firebase';
- 
+import './scheduleMeeting.module.css';
+import { addDocument, db } from '../../../firebase';
+import Sidebar from "../spaces/sidebar";
+
 const ScheduleMeeting = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedTime, setSelectedTime] = useState('12:00');
@@ -11,11 +12,11 @@ const ScheduleMeeting = () => {
   const [meetingType, setMeetingType] = useState('public'); // Default to 'public'
   const [selectedSpace, setSelectedSpace] = useState('');
 
-  const handleDateChange = (date) => {
+  const handleDateChange = (date: SetStateAction<Date>) => {
     setSelectedDate(date);
   };
 
-  const handleTimeChange = (e) => {
+  const handleTimeChange = (e: { target: { value: SetStateAction<string>; }; }) => {
     setSelectedTime(e.target.value);
   };
 
@@ -34,10 +35,32 @@ const ScheduleMeeting = () => {
   };
 
   const handleScheduleMeeting = () => {
-    // Perform actions with the selected date, time, title, meeting type, and selected space
     const formattedDateTime = `${selectedDate.toDateString()} ${selectedTime}`;
-    alert(`Meeting scheduled for ${formattedDateTime}.\nTitle: ${meetingTitle}\nMeeting Type: ${meetingType}\nSelected Space: ${selectedSpace}\nLink: [Placeholder for Link]`);
+    
+    addDocument({
+      title: meetingTitle,
+      dateTime: formattedDateTime,
+      meetingType: meetingType,
+      space: selectedSpace
+    });
+    // Create a document in Firestore collection
+    // db.collection('meetings').add({
+    //   title: meetingTitle,
+    //   dateTime: formattedDateTime,
+    //   meeting_type: meetingType,
+    //   space: selectedSpace
+    // })
+    // .then((docRef) => {
+    //   console.log("Document written with ID: ", docRef.id);
+    //   alert('Meeting scheduled successfully!');
+    // })
+    // .catch((error) => {
+    //   console.error('Error scheduling meeting: ', error);
+    //   alert('Error scheduling meeting. Please try again later.');
+    // });
   };
+  
+  
   
 
   // Generate time slots every 30 minutes
@@ -51,7 +74,9 @@ const ScheduleMeeting = () => {
   
 
   return (
-    <div className="schedule-meeting">
+
+    <div className="page-container">
+      <div className="schedule-meeting">
       <div className="calendar-section">
         <h2>Schedule Meeting </h2>
         <div className="date-picker">
@@ -99,7 +124,8 @@ const ScheduleMeeting = () => {
         </div>
       </div>
       <button className="schedule-meeting-button" onClick={handleScheduleMeeting}>Schedule Meeting</button>
-    </div>
+      </div>
+  </div>
   );
 };
 

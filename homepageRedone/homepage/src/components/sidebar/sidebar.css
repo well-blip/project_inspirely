@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100vh;
   background-color: #fff;
   color: black;
   /* padding: 20px; */
@@ -75,4 +74,8 @@
   padding-left: 20px;
   color: inherit;
   font-size: 10px;
+}
+
+.options{
+  color: black;
 }

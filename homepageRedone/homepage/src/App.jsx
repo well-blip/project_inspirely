@@ -3,13 +3,15 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import Line from "./components/line";
-import logo from "./assets/logo.png";
+import logo from "./assets/Logo.png";
 import Sidebar from "./components/sidebar/sidebar";
 import MultiActionAreaCard from "./components/card/card";
 import WhatsHappening from "./components/card/whatsonyourmindCard";
 import RowCard from "./components/card/smallerCard";
 import SocialPostCard from "./components/card/smallTextPostCard";
 import DateCalendarValue from "./components/calender/calender";
+// import Todo from "./components/todoList/todo";
+import { Container, Box } from "@mui/material";
 
 function App() {
   return (
@@ -49,7 +51,6 @@ function App() {
           className="mainBlockPostsArea"
           style={{
             display: "flex",
-
             position: "relative",
             paddingLeft: "55px",
           }}
@@ -69,23 +70,36 @@ function App() {
             className="rightBlock"
             style={{
               height: "100vh",
-
               width: "430px",
             }}
           >
             <SocialPostCard />
+            
           </div>
         </div>
         <div className="line" style={{ paddingTop: "0px" }}>
           <Line orientation="v" length={800} />
         </div>
       </div>
-      <div style={{ position: "relative", left: "1075px", bottom: "800px" }}>
-        <DateCalendarValue />
-        <Line orientation="h" length={300} />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          width: "100%",
+          position: "absolute",
+          top: "100px",
+          paddingRight: "10px",
+        }}
+      >
+        <div>
+          {/* <DateCalendarValue /> */}
+          <Line orientation="h" length={300} />
+          <Container sx={{ width: "350px" }}>
+            {/* <Todo /> */}
+          </Container>
+        </div>
       </div>
     </div>
   );
 }
-
 export default App;
