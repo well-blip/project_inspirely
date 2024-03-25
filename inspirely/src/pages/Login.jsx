@@ -62,6 +62,7 @@ const Login = () => {
           <MdOutlinePassword style={{ fontSize: '40px', margin: '5px 20px', color: "grey" }} />
           <input type="password" placeholder="Enter password" onChange={(event) => { setPassword(event.target.value); }} />
         </div>
+        
         <GoogleButton style={{ backgroundColor: '#f5f5f5', color: '#333', border: 'none', padding: '8px 20px', borderRadius: '4px' }}
           onClick={handleLogInWithGoogle}
         />
